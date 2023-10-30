@@ -11,6 +11,10 @@ import { NavItemComponent } from './shared/components/nav-item/nav-item.componen
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { SkillsComponent } from './pages/skills/skills.component';
+import { ExpComponent } from './pages/exp/exp.component';
+import { FormComponent } from './pages/form/form.component';
+import { LanguageSelectorComponent } from './shared/components/language-selector/language-selector.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,10 @@ import { ContactComponent } from './pages/contact/contact.component';
     NavItemComponent,
     HomeComponent,
     ContactComponent,
+    SkillsComponent,
+    ExpComponent,
+    FormComponent,
+    LanguageSelectorComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,13 +9,14 @@ import { GravityButtonService } from '../../services/gravity-button.service';
     <div class="navbar">
       <nav-item *ngFor="let page of pages" (onClick)="onClickItem(page)"> {{ page | uppercase }}</nav-item>
       <theme-controller></theme-controller>
+      <app-language-selector></app-language-selector>
     </div>
   `,
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements AfterViewInit {
 
-  pages = [RoutesEnum.HOME, RoutesEnum.CONTACT];
+  pages = [RoutesEnum.HOME, RoutesEnum.SKILLS, RoutesEnum.EXPERIENCES, RoutesEnum.FORMATION, RoutesEnum.CONTACT];
 
   constructor(
     private router: Router,

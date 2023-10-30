@@ -6,6 +6,8 @@
   --blob-color: rgba(16, 178, 41, 0.7);
   --blob-size: 400px;
   --card-opacity: 0.25;
+  --card-text-color: black;
+  --card-box-shadow-color: rgba(0, 0, 0, 0.6);
 }
 
 body {
@@ -26,6 +28,8 @@ body {
   --text-color: rgb(57, 136, 255);
   --icons-color-hover: white;
   --card-opacity: 0.1;
+  --card-text-color: white;
+  --card-box-shadow-color: rgba(255, 255, 255, 0.4);
 }
 
 mat-icon {
@@ -42,7 +46,7 @@ mat-icon {
 .gravityButton {
   display: grid;
   place-items: center;
-  width: 70px;
+  min-width: 70px;
   aspect-ratio: 1;
   border-radius: 50%;
 
@@ -109,9 +113,15 @@ mat-icon {
 .card-glass {
   background: rgba(255, 255, 255, var(--card-opacity));
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 4px 30px var(--card-box-shadow-color);
   backdrop-filter: blur(2.1px);
   -webkit-backdrop-filter: blur(2.1px);
   border: 1px solid rgba(255, 255, 255, 0.38);
   padding: 30px;
+  color: var(--card-text-color);
+  width: 80%;
+  height: 70%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
 }
