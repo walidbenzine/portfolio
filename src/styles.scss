@@ -1,1 +1,64 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --background-color: linear-gradient(180deg, rgba(0,212,255) 0%, rgba(0,212,255,0.8) 40%, white 100%);
+  --icons-color: white;
+  --icons-color-hover: rgb(57, 136, 255);
+  --text-color: white;
+}
+
+body {
+  background: var(--background-color);
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.dark-mode {
+  --background-color: linear-gradient(0deg, rgba(0,0,0) 0%, rgba(26,8,103) 50%, rgba(0,0,0) 100%);
+  --icons-color: rgb(57, 136, 255);
+  --text-color: rgb(57, 136, 255);
+  --icons-color-hover: white;
+}
+
+mat-icon {
+  color: var(--icons-color);
+  font-size: 30px !important;
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.gravityButton {
+  display: grid;
+  place-items: center;
+  width: 70px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+
+  &:hover {
+    color: var(--icons-color-hover) !important;
+  }
+  
+  .clickable {
+    aspect-ratio: 1;
+    background: none;
+    transform: translate(var(--tx, 0), var(--ty, 0));
+    transition: all 0.2s ease-out;
+    display: flex;
+    align-items: center;
+    
+    &:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    &:hover {
+      color: var(--icons-color-hover) !important;
+    }
+  }
+}
