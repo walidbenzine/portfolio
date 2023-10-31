@@ -7,9 +7,12 @@ import { GravityButtonService } from '../../services/gravity-button.service';
   selector: 'app-navbar',
   template: `
     <div class="navbar">
+      <h1>Walid.</h1>
       <nav-item *ngFor="let page of pages" (onClick)="onClickItem(page)"> {{ page | uppercase }}</nav-item>
-      <theme-controller></theme-controller>
-      <app-language-selector></app-language-selector>
+      <div class="icons">
+        <theme-controller></theme-controller>
+        <app-language-selector></app-language-selector>
+      </div>
     </div>
   `,
   styleUrls: ['./navbar.component.scss']

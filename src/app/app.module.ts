@@ -15,6 +15,7 @@ import { SkillsComponent } from './pages/skills/skills.component';
 import { ExpComponent } from './pages/exp/exp.component';
 import { FormComponent } from './pages/form/form.component';
 import { LanguageSelectorComponent } from './shared/components/language-selector/language-selector.component';
+import { CardItemComponent } from './shared/components/card-item/card-item.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { LanguageSelectorComponent } from './shared/components/language-selector
     ExpComponent,
     FormComponent,
     LanguageSelectorComponent,
+    CardItemComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,22 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-start;
+    min-height: 5%;
+    max-height: 10%;
     gap: 2%;
+
+    h1 {
+        width: 30%;
+        margin-left: 6%;
+        color: var(--text-color-h1-navbar);
+    }
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 10%;
 }

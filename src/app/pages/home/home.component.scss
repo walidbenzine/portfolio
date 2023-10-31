@@ -1,0 +1,30 @@
+.page-home {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.card-home {
+    max-width: 80%;
+    min-width: 70%;
+    height: 100%;
+    display: flex;
+}
+
+.picture {
+    width: 45%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: -1;
+    position: absolute;
+    left: 55%;
+    top: 12%;
+
+    img {
+        height: inherit;
+        width: 100%;
+        opacity: 0.5;
+    }
+}
