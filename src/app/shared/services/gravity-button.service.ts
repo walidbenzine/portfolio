@@ -8,17 +8,12 @@ export class GravityButtonService {
       clickableElement.addEventListener('mousemove', (e) => {
         const mouseEvent = e as MouseEvent;
         const rect = clickableElement.getBoundingClientRect();    
-        const h = rect.width / 2;
-        
-        const x = mouseEvent.clientX - rect.left - h;
-        const y = mouseEvent.clientY - rect.top - h;
-    
-        const r1 = Math.sqrt(x*x+y*y);
-        const r2 = (1 - (r1 / h)) * r1;
-    
-        const angle = Math.atan2(y, x);
-        const tx = Math.round(Math.cos(angle) * r2 * 100) / 100;
-        const ty = Math.round(Math.sin(angle) * r2 * 100) / 100;
+        const halfRectWidth = rect.width / 2
+        const halfRectHeight = rect.height / 2
+        const centerRectX = rect.x + halfRectWidth
+        const centerRectY = rect.y + halfRectHeight
+        const tx = ( mouseEvent.clientX - centerRectX ) / 4;
+        const ty = ( mouseEvent.clientY - centerRectY ) / 4;
 
         clickableElement.style.setProperty('--tx', `${tx}px`);
         clickableElement.style.setProperty('--ty', `${ty}px`);
