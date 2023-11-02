@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { fadeInOut } from './animations/animation';
 import { BlobService } from './shared/services/blob.service';
 
@@ -13,9 +14,11 @@ export class AppComponent implements OnInit {
 
   constructor(
     private blobService: BlobService,
+    private translate: TranslateService,
   ) { }
 
   ngOnInit(): void {
     this.blobService.setBlobDesign(document);
+    this.translate.setDefaultLang('fr');
   }
 }

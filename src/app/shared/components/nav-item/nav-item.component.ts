@@ -4,8 +4,8 @@ import { Component, Input } from "@angular/core";
   selector: 'nav-item',
   template: `
       <div class="gravityButton">
-        <span class="clickable" [routerLink]="page" routerLinkActive="active">
-          {{ page | uppercase }}
+        <span class="clickable" [routerLink]="page" routerLinkActive="active" translate>
+          {{ page }}
         </span>
     </div>
   `,

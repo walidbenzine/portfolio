@@ -16,6 +16,9 @@ import { ExpComponent } from './pages/exp/exp.component';
 import { FormComponent } from './pages/form/form.component';
 import { LanguageSelectorComponent } from './shared/components/language-selector/language-selector.component';
 import { CardItemComponent } from './shared/components/card-item/card-item.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -37,8 +40,20 @@ import { CardItemComponent } from './shared/components/card-item/card-item.compo
     MatIconModule,
     MatToolbarModule,
     AppRoutingModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}

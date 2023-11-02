@@ -7,7 +7,9 @@ import { GravityButtonService } from '../../services/gravity-button.service';
   template: `
     <div class="navbar">
       <h1>Walid.</h1>
-      <nav-item *ngFor="let page of pages" [page]="page"></nav-item>
+      <div class="items">
+        <nav-item *ngFor="let page of pages" [page]="page"></nav-item>
+      </div>
       <div class="icons">
         <theme-controller></theme-controller>
         <app-language-selector></app-language-selector>
@@ -18,7 +20,7 @@ import { GravityButtonService } from '../../services/gravity-button.service';
 })
 export class NavbarComponent implements AfterViewInit {
 
-  pages = [RoutesEnum.HOME, RoutesEnum.SKILLS, RoutesEnum.EXPERIENCES, RoutesEnum.FORMATION, RoutesEnum.CONTACT];
+  pages = [RoutesEnum.HOME, RoutesEnum.SKILLS, RoutesEnum.EXPERIENCES, RoutesEnum.FORMATIONS, RoutesEnum.CONTACT];
 
   constructor(
     private gravityButtonService: GravityButtonService,

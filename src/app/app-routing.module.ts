@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: RoutesEnum.HOME, component: HomeComponent},
   { path: RoutesEnum.SKILLS, component: SkillsComponent},
   { path: RoutesEnum.EXPERIENCES, component: ExpComponent},
-  { path: RoutesEnum.FORMATION, component: FormComponent},
+  { path: RoutesEnum.FORMATIONS, component: FormComponent},
   { path: RoutesEnum.CONTACT, component: ContactComponent},
   { path: '**', redirectTo: RoutesEnum.HOME },
 ];

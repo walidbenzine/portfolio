@@ -3,5 +3,5 @@ export enum RoutesEnum {
     CONTACT = 'contact',
     SKILLS = 'skills',
     EXPERIENCES = 'experiences',
-    FORMATION = 'formation',
+    FORMATIONS = 'formations',
 }

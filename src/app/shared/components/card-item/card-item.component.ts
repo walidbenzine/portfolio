@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-card-item',
   template: `
     <div class="card-glass">
-      <h1>{{ title | uppercase}}</h1>
+      <h1 translate>{{ title }}</h1>
       <ng-content></ng-content>
     </div>
   `,

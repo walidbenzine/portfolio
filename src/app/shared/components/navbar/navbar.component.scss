@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-around;
     min-height: 5%;
     max-height: 10%;
     gap: 2%;
@@ -12,12 +12,24 @@
         margin-left: 6%;
         color: var(--text-color-h1-navbar);
     }
+
+    nav-item {
+        display: flex;
+    }
 }
 
 .icons {
+    width: 10%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
     margin-left: 12%;
+}
+
+.items {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
