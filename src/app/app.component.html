@@ -1,3 +1,5 @@
 <app-navbar></app-navbar>
 <div id="blob"></div>
-<router-outlet></router-outlet>
+<main [@fadeInOut]="outletRef.isActivated ? outletRef.activatedRoute : ''" class="pages">
+    <router-outlet #outletRef="outlet"></router-outlet>
+ </main>

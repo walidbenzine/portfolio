@@ -7,9 +7,9 @@
 }
 
 .card-home {
-    max-width: 80%;
-    min-width: 70%;
-    height: 100%;
+    width: 60%;
+    height: 75%;
+    margin: 2% 0 0 2%;
     display: flex;
 }
 
@@ -18,13 +18,12 @@
     height: 100%;
     opacity: 0.5;
     z-index: -1;
-    position: absolute;
-    left: 55%;
+    position: fixed;
+    right: 0%;
     top: 12%;
 
     img {
         height: inherit;
-        width: 100%;
         opacity: 0.5;
     }
 }

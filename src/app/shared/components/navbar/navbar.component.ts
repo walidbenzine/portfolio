@@ -1,5 +1,4 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { RoutesEnum } from '../../enums/routes.enum';
 import { GravityButtonService } from '../../services/gravity-button.service';
 
@@ -8,7 +7,7 @@ import { GravityButtonService } from '../../services/gravity-button.service';
   template: `
     <div class="navbar">
       <h1>Walid.</h1>
-      <nav-item *ngFor="let page of pages" (onClick)="onClickItem(page)"> {{ page | uppercase }}</nav-item>
+      <nav-item *ngFor="let page of pages" [page]="page"></nav-item>
       <div class="icons">
         <theme-controller></theme-controller>
         <app-language-selector></app-language-selector>
@@ -22,15 +21,10 @@ export class NavbarComponent implements AfterViewInit {
   pages = [RoutesEnum.HOME, RoutesEnum.SKILLS, RoutesEnum.EXPERIENCES, RoutesEnum.FORMATION, RoutesEnum.CONTACT];
 
   constructor(
-    private router: Router,
     private gravityButtonService: GravityButtonService,
   ) { }
 
   ngAfterViewInit(): void {
     this.gravityButtonService.subscribeToMouseMove(document);
-  }
-
-  onClickItem(route: RoutesEnum): void {
-    this.router.navigate([route]);
   }
 }
