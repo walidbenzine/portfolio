@@ -7,5 +7,6 @@
     "hello": "Bonjour, je m'apelle",
     "iAm": "Et je suis un",
     "job": "Développeur Fullstack",
-    "downloadCV": "Télécharger CV"
+    "downloadCV": "Télécharger PDF",
+    "details": "Vous consultez actuellement mon CV numérique, il est conçu uniquement avec des mechanismes dont je suis habitué. N'hésitez pas à me contacter pour vos futurs projets via ces liens :"
 }

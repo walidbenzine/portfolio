@@ -8,8 +8,8 @@
 
 .card-home {
     width: 50%;
-    height: 75%;
-    margin: 2% 0 0 2%;
+    height: 60%;
+    margin: 4% 0 0 2%;
     z-index: 2;
     position: fixed;
 }
@@ -36,8 +36,26 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    font-size: larger;
     width: 100%;
     height: 100%;
+}
+
+.hello {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1%;
+
+    h3 {
+        color: var(--job-title-color);
+        font-size: x-large;
+    }
+}
+
+.details {
+    display: flex;
+    flex-direction: row;
 }
 
 .job {
