@@ -15,7 +15,6 @@ import { SkillsComponent } from './pages/skills/skills.component';
 import { ExpComponent } from './pages/exp/exp.component';
 import { FormComponent } from './pages/form/form.component';
 import { LanguageSelectorComponent } from './shared/components/language-selector/language-selector.component';
-import { CardItemComponent } from './shared/components/card-item/card-item.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -32,7 +31,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ExpComponent,
     FormComponent,
     LanguageSelectorComponent,
-    CardItemComponent,
   ],
   imports: [
     BrowserModule,

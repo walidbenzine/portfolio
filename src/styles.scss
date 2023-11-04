@@ -9,6 +9,8 @@
   --card-text-color: black;
   --card-box-shadow-color: rgba(0, 0, 0, 0.6);
   --text-color-h1-navbar: black;
+  --job-title-color: rgb(57, 136, 255);
+  --job-title-blink-color: rgba(26, 8, 103);
 }
 
 body {
@@ -32,9 +34,11 @@ body {
   --card-text-color: white;
   --card-box-shadow-color: rgba(255, 255, 255, 0.4);
   --text-color-h1-navbar: white;
+  --job-title-color: rgb(57, 136, 255);
+  --job-title-blink-color: rgba(0, 212, 255);
 }
 
-mat-icon {
+i, mat-icon {
   color: var(--icons-color);
   font-size: 30px !important;
   width: 30px !important;
@@ -126,4 +130,20 @@ mat-icon {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@keyframes zoom-in-zoom-out {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.width-inherit {
+  width: fit-content;
 }

@@ -3,5 +3,8 @@
     "skills": "SKILLS",
     "experiences": "EXPERIENCES",
     "formations": "FORMS",
-    "contact": "CONTACT"
+    "contact": "CONTACT",
+    "hello": "Hello, my name is",
+    "iAm": "And I'm a",
+    "job": "Fullstack Developer"
 }

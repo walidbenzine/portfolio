@@ -25,5 +25,52 @@
     img {
         height: inherit;
         opacity: 0.5;
+        animation: zoom-in-zoom-out 5s ease infinite;
     }
+}
+
+.body-card-home {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+
+.job {
+    display: flex;
+    gap: 1%;
+    align-items: center;
+}
+
+.jobTitle {
+    display: inline-block;
+    width: 0;
+    max-width: fit-content;
+    font-size: x-large;
+    overflow: hidden;
+    border-right: .15em solid var(--job-title-blink-color);
+    padding-right: 5px;
+    color: var(--job-title-color);
+    white-space: nowrap;
+    animation: 
+        typing 5s steps(40, end) forwards,
+        blink 1s infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+@keyframes blink {
+    50% {
+      border-color: transparent
+    }
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
 }
