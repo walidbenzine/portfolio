@@ -1,0 +1,20 @@
+.links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 30%;
+    height: 80px;
+}
+
+.link {
+    width: 80px;
+    aspect-ratio: 1;
+}
+
+a {
+    text-decoration: none;
+}
+
+i, mat-icon {
+    color: var(--icons-links-color);
+}

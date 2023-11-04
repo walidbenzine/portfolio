@@ -10,7 +10,6 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { NavItemComponent } from './shared/components/nav-item/nav-item.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './pages/home/home.component';
-import { ContactComponent } from './pages/contact/contact.component';
 import { SkillsComponent } from './pages/skills/skills.component';
 import { ExpComponent } from './pages/exp/exp.component';
 import { FormComponent } from './pages/form/form.component';
@@ -18,6 +17,7 @@ import { LanguageSelectorComponent } from './shared/components/language-selector
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { LinksComponent } from './pages/home/links/links.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +26,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     NavItemComponent,
     HomeComponent,
-    ContactComponent,
     SkillsComponent,
     ExpComponent,
     FormComponent,
     LanguageSelectorComponent,
+    LinksComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContactComponent } from './pages/contact/contact.component';
 import { ExpComponent } from './pages/exp/exp.component';
 import { FormComponent } from './pages/form/form.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -13,7 +12,6 @@ const routes: Routes = [
   { path: RoutesEnum.SKILLS, component: SkillsComponent},
   { path: RoutesEnum.EXPERIENCES, component: ExpComponent},
   { path: RoutesEnum.FORMATIONS, component: FormComponent},
-  { path: RoutesEnum.CONTACT, component: ContactComponent},
   { path: '**', redirectTo: RoutesEnum.HOME },
 ];
 

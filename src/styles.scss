@@ -11,10 +11,12 @@
   --text-color-h1-navbar: black;
   --job-title-color: rgb(57, 136, 255);
   --job-title-blink-color: rgba(26, 8, 103);
+  --icons-links-color: black;
 }
 
 body {
   background: var(--background-color);
+  background-repeat: no-repeat;
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -36,6 +38,7 @@ body {
   --text-color-h1-navbar: white;
   --job-title-color: rgb(57, 136, 255);
   --job-title-blink-color: rgba(0, 212, 255);
+  --icons-links-color: var(--icons-color);
 }
 
 i, mat-icon {

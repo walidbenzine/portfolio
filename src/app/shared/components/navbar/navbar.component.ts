@@ -20,7 +20,7 @@ import { GravityButtonService } from '../../services/gravity-button.service';
 })
 export class NavbarComponent implements AfterViewInit {
 
-  pages = [RoutesEnum.HOME, RoutesEnum.SKILLS, RoutesEnum.EXPERIENCES, RoutesEnum.FORMATIONS, RoutesEnum.CONTACT];
+  pages = [RoutesEnum.HOME, RoutesEnum.SKILLS, RoutesEnum.EXPERIENCES, RoutesEnum.FORMATIONS];
 
   constructor(
     private gravityButtonService: GravityButtonService,

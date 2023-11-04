@@ -7,10 +7,11 @@
 }
 
 .card-home {
-    width: 60%;
+    width: 50%;
     height: 75%;
     margin: 2% 0 0 2%;
-    display: flex;
+    z-index: 2;
+    position: fixed;
 }
 
 .picture {
@@ -21,6 +22,8 @@
     position: fixed;
     right: 0%;
     top: 12%;
+    display: flex;
+    justify-content: center;
 
     img {
         height: inherit;
@@ -71,6 +74,6 @@
 
 .links {
     display: flex;
-    flex-direction: row;
-    gap: 5%;
+    align-items: center;
+    justify-content: center;
 }
