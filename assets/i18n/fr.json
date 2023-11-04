@@ -3,5 +3,8 @@
     "skills": "COMPETENCES",
     "experiences": "EXPERIENCES",
     "formations": "FORMATIONS",
-    "contact": "CONTACT"
+    "contact": "CONTACT",
+    "hello": "Bonjour, je m'apelle",
+    "iAm": "Et je suis un",
+    "job": "Développeur Fullstack"
 }
