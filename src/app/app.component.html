@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
 <div id="blob"></div>
-<main [@fadeInOut]="outletRef.isActivated ? outletRef.activatedRoute : ''" class="pages">
+<main [@fadeInOut]="outletRef.isActivated ? outletRef.activatedRoute : ''" class="pages" (click)="navbarService.hideMenu()">
     <router-outlet #outletRef="outlet"></router-outlet>
  </main>

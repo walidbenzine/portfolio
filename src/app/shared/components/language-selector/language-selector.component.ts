@@ -4,15 +4,15 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-language-selector',
   template: `
-  <div class="gravityButton">
-    <mat-icon *ngIf="isFrench; else english" class="clickable" (click)="changeLanguage()" fontSet="material-symbols-outlined">
-    <span class="fi fi-us flag"></span>
+  <div class="gravityButton" (click)="changeLanguage()">
+    <mat-icon *ngIf="isFrench; else english" class="clickable" fontSet="material-symbols-outlined">
+    <div class="fi fi-us flag"></div>
       language_us
     </mat-icon>
   </div>
   <ng-template #english>
-    <mat-icon class="clickable" (click)="changeLanguage()" fontSet="material-symbols-outlined">
-      <span class="fi fi-fr flag"></span>
+    <mat-icon class="clickable" fontSet="material-symbols-outlined">
+      <div class="fi fi-fr flag"></div>
       language_french
     </mat-icon>
   </ng-template>

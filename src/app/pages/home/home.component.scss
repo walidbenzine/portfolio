@@ -65,7 +65,6 @@
 }
 
 .jobTitle {
-    display: inline-block;
     width: 0;
     max-width: fit-content;
     font-size: x-large;
@@ -75,16 +74,16 @@
     color: var(--job-title-color);
     white-space: nowrap;
     animation: 
-        typing 5s steps(40, end) forwards,
-        blink 1s infinite;
+        typingName 5s steps(40, end) forwards,
+        blinkTap 1s infinite;
 }
 
-@keyframes typing {
+@keyframes typingName {
     from { width: 0 }
     to { width: 100% }
   }
 
-@keyframes blink {
+@keyframes blinkTap {
     50% {
       border-color: transparent
     }
@@ -94,4 +93,45 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.container {
+    width: 100%;
+}
+
+@media screen and (max-width: 900px) {
+    .card-home {
+        width: 80% !important;
+        height: 75% !important;
+        margin: 0 0 0 0 !important;
+    }
+
+    .body-card-home {
+        font-size: large !important;
+    }
+
+    .jobTitle  {
+        font-size: x-large !important;
+    }
+
+    h3 {
+        font-size: large !important;
+    }
+
+    .picture {
+        right: auto !important;
+        width: 100% !important;
+    }
+
+    .page-home {
+        justify-content: center !important;
+    }
+
+    .hello {
+        flex-direction: column !important;
+    }
+
+    .job {
+        flex-direction: column !important;
+    }
 }

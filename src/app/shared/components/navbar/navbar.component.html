@@ -1,0 +1,32 @@
+<div class="navbar">
+
+    <h1 (click)="navBarService.hideMenu()">Walid.</h1>
+
+    <div class="items navbar-vue" (click)="navBarService.hideMenu()">
+        <ng-container *ngTemplateOutlet="items"></ng-container>
+    </div>
+
+    <div class="icons navbar-vue">
+        <ng-container *ngTemplateOutlet="icons"></ng-container>
+    </div>
+
+    <div class="sidenav sidenav-vue">
+        <mat-icon class="clickable" (click)="navBarService.menuClick()">menu</mat-icon>
+
+        <div class="sidenav-items card-glass" *ngIf="navBarService.isMenuOpened">
+            <ng-container *ngTemplateOutlet="items"></ng-container>
+            <div class="icons">
+                <ng-container *ngTemplateOutlet="icons"></ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #items>
+    <nav-item *ngFor="let page of pages" [page]="page"></nav-item>
+</ng-template>
+
+<ng-template #icons>
+    <theme-controller></theme-controller>
+    <app-language-selector></app-language-selector>
+</ng-template>

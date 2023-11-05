@@ -2,13 +2,13 @@
     display: flex;
     flex-direction: row;
     height: 10%;
-    justify-content: space-around;
+    padding: 0 2% 0 2%;
+    justify-content: space-between;
     align-items: center;
-    gap: 2%;
 
     h1 {
         width: 30%;
-        margin-left: 6%;
+        margin-left: 20px;
         color: var(--text-color-h1-navbar);
     }
 
@@ -20,19 +20,60 @@
 }
 
 .icons {
-    width: 10%;
     height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    margin-left: 12%;
 }
 
 .items {
-    width: 60%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+.sidenav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sidenav-items {
+    z-index: 5;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    width: fit-content;
+    margin-top: 30px;
+    color: var(--text-color);
+    background: var(--background-color-sidenav);
+}
+
+.sidenav-vue {
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    h1 {
+        width: fit-content !important;
+        margin-left: 5px !important;
+        font-size: 1.5em !important;
+    }
+
+    .icons {
+        width: 100% !important
+    }
+
+    .navbar-vue {
+        display: none !important;
+    }
+
+    .sidenav-vue {
+        display: flex !important;
+    }
 }
