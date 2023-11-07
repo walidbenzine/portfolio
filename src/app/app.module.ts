@@ -18,6 +18,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LinksComponent } from './pages/home/links/links.component';
+import { SidenavComponent } from './shared/components/navbar/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { LinksComponent } from './pages/home/links/links.component';
     FormComponent,
     LanguageSelectorComponent,
     LinksComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,

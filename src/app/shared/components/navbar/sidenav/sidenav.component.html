@@ -1,0 +1,10 @@
+
+<div class="sidenav sidenav-vue">
+
+    <mat-icon class="clickable" (click)="navBarService.menuClick()">menu</mat-icon>
+
+    <div class="sidenav-items card-glass" *ngIf="navBarService.isMenuOpened">
+        <ng-content></ng-content>
+    </div>
+
+</div>

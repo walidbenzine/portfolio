@@ -1,8 +1,8 @@
 <div class="navbar">
 
-    <h1 (click)="navBarService.hideMenu()">Walid.</h1>
+    <h1>Walid.</h1>
 
-    <div class="items navbar-vue" (click)="navBarService.hideMenu()">
+    <div class="items navbar-vue">
         <ng-container *ngTemplateOutlet="items"></ng-container>
     </div>
 
@@ -10,16 +10,12 @@
         <ng-container *ngTemplateOutlet="icons"></ng-container>
     </div>
 
-    <div class="sidenav sidenav-vue">
-        <mat-icon class="clickable" (click)="navBarService.menuClick()">menu</mat-icon>
-
-        <div class="sidenav-items card-glass" *ngIf="navBarService.isMenuOpened">
-            <ng-container *ngTemplateOutlet="items"></ng-container>
-            <div class="icons">
-                <ng-container *ngTemplateOutlet="icons"></ng-container>
-            </div>
+    <app-sidenav>
+        <ng-container *ngTemplateOutlet="items"></ng-container>
+        <div class="icons">
+            <ng-container *ngTemplateOutlet="icons"></ng-container>
         </div>
-    </div>
+    </app-sidenav>
 </div>
 
 <ng-template #items>

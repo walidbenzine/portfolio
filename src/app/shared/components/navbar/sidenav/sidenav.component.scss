@@ -1,0 +1,28 @@
+.sidenav-items {
+    z-index: 5;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    width: fit-content;
+    margin-top: 30px;
+    color: var(--text-color);
+    background: var(--background-color-sidenav);
+}
+
+.sidenav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sidenav-vue {
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    .sidenav-vue {
+        display: flex !important;
+    }
+}
