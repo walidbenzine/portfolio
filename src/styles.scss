@@ -50,6 +50,12 @@ i, mat-icon {
   height: 30px !important;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 .clickable {
   cursor: pointer;
 }
@@ -129,7 +135,7 @@ i, mat-icon {
 
 .basic-card-glass {
   width: 90% !important;
-  height: 75% !important;
+  height: 85% !important;
   margin-top: 1% !important;
   margin-left: auto !important;
   margin-right: auto !important;

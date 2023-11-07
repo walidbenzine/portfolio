@@ -19,6 +19,11 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LinksComponent } from './pages/home/links/links.component';
 import { SidenavComponent } from './shared/components/navbar/sidenav/sidenav.component';
+import { ViverisComponent } from './pages/exp/viveris/viveris.component';
+import { CapComponent } from './pages/exp/cap/cap.component';
+import { FreeComponent } from './pages/exp/free/free.component';
+import { TelecomComponent } from './pages/exp/telecom/telecom.component';
+import { CardItemComponent } from './shared/components/card-item/card-item.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,11 @@ import { SidenavComponent } from './shared/components/navbar/sidenav/sidenav.com
     LanguageSelectorComponent,
     LinksComponent,
     SidenavComponent,
+    ViverisComponent,
+    CapComponent,
+    FreeComponent,
+    TelecomComponent,
+    CardItemComponent,
   ],
   imports: [
     BrowserModule,
