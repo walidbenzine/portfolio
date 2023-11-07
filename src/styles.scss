@@ -9,7 +9,7 @@
   --card-text-color: black;
   --card-box-shadow-color: rgba(0, 0, 0, 0.6);
   --text-color-h1-navbar: black;
-  --job-title-color: rgb(57, 136, 255);
+  --job-title-color: white;
   --job-title-blink-color: rgba(26, 8, 103);
   --icons-links-color: black;
   --background-color-sidenav: rgba(0, 212, 255, 0.9);
@@ -52,6 +52,10 @@ i, mat-icon {
 
 .clickable {
   cursor: pointer;
+}
+
+.active-route {
+  color: var(--icons-color-hover);
 }
 
 .gravityButton {
