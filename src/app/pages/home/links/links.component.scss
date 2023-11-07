@@ -63,3 +63,9 @@ i, mat-icon {
       }
     }
   }
+
+  @media screen and (max-height: 430px){
+    .container {
+      flex-direction: row !important;
+    }
+}

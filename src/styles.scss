@@ -169,3 +169,9 @@ i, mat-icon {
     max-height: 150px !important;
   }
 }
+
+@media screen and (max-height: 430px){
+  .card-glass {
+    padding: 20px !important;
+  }
+}

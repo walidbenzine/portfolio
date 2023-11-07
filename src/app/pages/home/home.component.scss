@@ -135,3 +135,27 @@
         flex-direction: column !important;
     }
 }
+
+@media screen and (max-height: 430px){
+    .body-card-home {
+        font-size: small !important;
+    }
+
+    .card-home {
+        height: 70% !important;
+    }
+}
+
+@media screen and (max-height: 320px){
+    .body-card-home {
+        .container {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-around !important;
+        }
+    }
+
+    .jobTitle {
+        font-size: large !important;
+    }
+}
