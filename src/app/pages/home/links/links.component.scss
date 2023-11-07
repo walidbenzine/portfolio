@@ -57,15 +57,22 @@ i, mat-icon {
 
     .container {
       flex-direction: column !important;
+      height: 150px !important;
+    }
 
-      .links {
-        width: 100% !important;
-      }
+    .links {
+      height: 50px !important;
+      width: 100% !important;
+    }
+
+    .link {
+      width: 50px !important;
     }
   }
 
   @media screen and (max-height: 430px){
     .container {
       flex-direction: row !important;
+      height: 50px !important;
     }
 }

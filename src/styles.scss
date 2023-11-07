@@ -123,6 +123,14 @@ i, mat-icon {
   backdrop-filter: blur;
 }
 
+.basic-card-glass {
+  width: 90% !important;
+  height: 75% !important;
+  margin-top: 1% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 .card-glass {
   background: rgba(255, 255, 255, var(--card-opacity));
   border-radius: 16px;
@@ -162,6 +170,11 @@ i, mat-icon {
     .clickable {
       transform: none !important;
     }
+  }
+
+  .basic-card-glass {
+    padding: 10px !important;
+    height: 80% !important;
   }
 
   #blob {
