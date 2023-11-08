@@ -13,6 +13,7 @@
   --job-title-blink-color: rgba(26, 8, 103);
   --icons-links-color: black;
   --background-color-sidenav: rgba(0, 212, 255, 0.9);
+  --caroussel-nav-item-color: black;
 }
 
 body {
@@ -41,6 +42,7 @@ body {
   --job-title-blink-color: rgba(0, 212, 255);
   --icons-links-color: var(--icons-color);
   --background-color-sidenav: rgba(0, 0, 0, 0.9);
+  --caroussel-nav-item-color: white;
 }
 
 i, mat-icon {
