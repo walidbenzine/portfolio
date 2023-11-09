@@ -24,7 +24,9 @@ import { CapComponent } from './pages/exp/cap/cap.component';
 import { FreeComponent } from './pages/exp/free/free.component';
 import { TelecomComponent } from './pages/exp/telecom/telecom.component';
 import { CardItemComponent } from './shared/components/card-item/card-item.component';
-import { CarousselComponent } from './shared/components/caroussel/caroussel.component';
+import { CarouselComponent } from './shared/components/caroussel/caroussel.component';
+import { CarouselItemDirective } from './shared/directives/carrousel-item.directive';
+import { CarouselItemElement } from './shared/directives/caroussel-item-element.directive';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { CarousselComponent } from './shared/components/caroussel/caroussel.comp
     FreeComponent,
     TelecomComponent,
     CardItemComponent,
-    CarousselComponent,
+    CarouselComponent,
+    CarouselItemElement,
+    CarouselItemDirective,
   ],
   imports: [
     BrowserModule,

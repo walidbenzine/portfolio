@@ -1,14 +1,8 @@
-<div class="exp-page">
-    <app-card-item>
-        <app-viveris></app-viveris>
-    </app-card-item>
-    <app-card-item>
-        <app-cap></app-cap>
-    </app-card-item>
-    <app-card-item>
-        <app-free></app-free>
-    </app-card-item>
-    <app-card-item>
-        <app-telecom></app-telecom>
-    </app-card-item>
+<div class="card-glass basic-card-glass exp-page">
+
+    <carousel>
+        <app-viveris *carouselItem class="fullWidthHeight"></app-viveris>
+        <app-telecom *carouselItem class="fullWidthHeight"></app-telecom>
+    </carousel>
+
 </div>

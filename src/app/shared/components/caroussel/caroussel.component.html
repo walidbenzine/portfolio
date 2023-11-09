@@ -1,74 +1,14 @@
-<div class="container">
-    <div class="carousel">
-      <ul class="slides card-glass">
-
-        <input type="radio" name="radio-buttons" id="component-1" checked />
-        <li class="slide-container">
-          <div class="slide-image">
-            <ng-content select="[component-1]"></ng-content>
-          </div>
-          <div class="carousel-controls">
-            <label for="component-4" class="prev-slide">
-              <span>&lsaquo;</span>
-            </label>
-            <label for="component-2" class="next-slide">
-              <span>&rsaquo;</span>
-            </label>
-          </div>
-        </li>
-
-        <input type="radio" name="radio-buttons" id="component-2" />
-        <li class="slide-container">
-          <div class="slide-image">
-            <ng-content select="[component-2]"></ng-content>
-          </div>
-          <div class="carousel-controls">
-            <label for="component-1" class="prev-slide">
-              <span>&lsaquo;</span>
-            </label>
-            <label for="component-3" class="next-slide">
-              <span>&rsaquo;</span>
-            </label>
-          </div>
-        </li>
-
-        <input type="radio" name="radio-buttons" id="component-3" />
-        <li class="slide-container">
-          <div class="slide-image">
-            <ng-content select="[component-3]"></ng-content>
-          </div>
-          <div class="carousel-controls">
-            <label for="component-2" class="prev-slide">
-              <span>&lsaquo;</span>
-            </label>
-            <label for="component-4" class="next-slide">
-              <span>&rsaquo;</span>
-            </label>
-          </div>
-        </li>
-
-        <input type="radio" name="radio-buttons" id="component-4" />
-        <li class="slide-container">
-          <div class="slide-image">
-            <ng-content select="[component-4]"></ng-content>
-          </div>
-          <div class="carousel-controls">
-            <label for="component-3" class="prev-slide">
-              <span>&lsaquo;</span>
-            </label>
-            <label for="component-1" class="next-slide">
-              <span>&rsaquo;</span>
-            </label>
-          </div>
-        </li>
-
-        <div class="carousel-dots">
-          <label for="component-1" class="carousel-dot" id="component-dot-1"></label>
-          <label for="component-2" class="carousel-dot" id="component-dot-2"></label>
-          <label for="component-3" class="carousel-dot" id="component-dot-3"></label>
-          <label for="component-4" class="carousel-dot" id="component-dot-4"></label>
-        </div>
-
-      </ul>
-    </div>
+<div class="caroussel">
+  <div class="carousel-wrapper" [ngStyle]="carouselWrapperStyle">
+    <ul class="carousel-inner" #carousel>
+      <li *ngFor="let item of items;" class="carousel-item">
+        <ng-container [ngTemplateOutlet]="item.tpl"></ng-container>
+      </li>
+    </ul>
   </div>
+  <div class="controls">
+    <mat-icon [hidden]="!isPrevVisible" (click)="prev()">arrow_back-ios</mat-icon>
+    <span> {{ service.currentSlide + 1 }} / {{ items?.length }}</span>
+    <mat-icon [hidden]="!isNextVisible" (click)="next()">arrow_forward_ios</mat-icon>
+  </div>
+</div>
