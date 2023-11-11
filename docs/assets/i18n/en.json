@@ -8,5 +8,9 @@
     "iAm": "And I'm a",
     "job": "Fullstack Developer",
     "viewCV": "View PDF",
-    "details": "You are currently viewing my digital CV, it is designed only with mechanisms that I am used to. Do not hesitate to contact me for your future projects via these links :"
+    "details": "You are currently viewing my digital CV, it is designed only with mechanisms that I am used to. Do not hesitate to contact me for your future projects via these links :",
+    "companyName": "Company name: ",
+    "role": "Function: ",
+    "type": "Type of contract: ",
+    "today": "Today"
 }

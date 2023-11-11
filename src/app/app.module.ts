@@ -27,6 +27,9 @@ import { CardItemComponent } from './shared/components/card-item/card-item.compo
 import { CarouselComponent } from './shared/components/caroussel/caroussel.component';
 import { CarouselItemDirective } from './shared/directives/carrousel-item.directive';
 import { CarouselItemElement } from './shared/directives/caroussel-item-element.directive';
+import { UpemComponent } from './pages/form/upem/upem.component';
+import { UboComponent } from './pages/form/ubo/ubo.component';
+import { UsthbComponent } from './pages/form/usthb/usthb.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,9 @@ import { CarouselItemElement } from './shared/directives/caroussel-item-element.
     CarouselComponent,
     CarouselItemElement,
     CarouselItemDirective,
+    UpemComponent,
+    UboComponent,
+    UsthbComponent,
   ],
   imports: [
     BrowserModule,
