@@ -45,6 +45,10 @@ ul {
     width: 50px !important;
     height: 50px !important;
     color: var(--caroussel-nav-item-color) !important;
+
+    &:hover {
+      color: var(--carousel-actions-color-hover) !important;
+    }
   }
 }
 

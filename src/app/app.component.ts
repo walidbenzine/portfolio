@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { fadeInOut } from './animations/animation';
+import { fadeInOut } from './shared/animations/animation';
 import { BlobService } from './shared/services/blob.service';
 
 @Component({

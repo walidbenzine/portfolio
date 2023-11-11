@@ -7,8 +7,8 @@
     </ul>
   </div>
   <div class="controls">
-    <mat-icon [hidden]="!isPrevVisible" (click)="prev()">arrow_back-ios</mat-icon>
+    <mat-icon [hidden]="!isPrevVisible" (click)="prev()" class="clickable">arrow_back-ios</mat-icon>
     <span> {{ service.currentSlide + 1 }} / {{ items?.length }}</span>
-    <mat-icon [hidden]="!isNextVisible" (click)="next()">arrow_forward_ios</mat-icon>
+    <mat-icon [hidden]="!isNextVisible" (click)="next()" class="clickable">arrow_forward_ios</mat-icon>
   </div>
 </div>
