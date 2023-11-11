@@ -8,5 +8,9 @@
     "iAm": "Et je suis un",
     "job": "Développeur Fullstack",
     "viewCV": "Consulter PDF",
-    "details": "Vous consultez actuellement mon CV numérique, il est conçu uniquement avec des mechanismes dont je suis habitué. N'hésitez pas à me contacter pour vos futurs projets via ces liens :"
+    "details": "Vous consultez actuellement mon CV numérique, il est conçu uniquement avec des mechanismes dont je suis habitué. N'hésitez pas à me contacter pour vos futurs projets via ces liens :",
+    "companyName": "Nom de l'entreprise: ",
+    "role": "Rôle: ",
+    "type": "Type de contrat: ",
+    "today": "Aujourd'hui"
 }
