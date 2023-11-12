@@ -1,6 +1,6 @@
 {
     "home": "ACCUEIL",
-    "skills": "COMPETENCES",
+    "projects": "PROJETS",
     "experiences": "EXPERIENCES",
     "formations": "FORMATIONS",
     "contact": "CONTACT",
@@ -27,5 +27,11 @@
     "upem": "Université Gustave Eiffel (ex Université Paris-Est Marne La Vallée)",
     "m2-upem": "Master 2 en systèmes et services pour l'internet des objets (SSIO-IOT)",
     "ing-network": "Ingénieur réseaux et télécommunications",
-    "free-job": "Artiste en spectacle vivant (freestyle football)"
+    "free-job": "Artiste en spectacle vivant (freestyle football)",
+    "intern-security": "Stage de fin de cycle portant sur la thématique de la sécurité des réseaux informatiques",
+    "simul-networks": "Création d'un réseau local et implémentation des protocoles de base (attribution d'IP dynamiques, configuration routeur, tests de ping's entre les endpoints) sous GNS3",
+    "simul-security": "Simulations d'attaques sur des réseaux informatiques (ManInTheMiddle, BruteForce, Phishing, DDos)",
+    "solutions-security": "Présentation de solutions robustes contre les attaques précédemment simulées",
+    "nfg-crew": "Membre fondateur du groupe d'animations NFG (Next Freestyle Generation) qui était à l'époque la référence pour les plus grosses entreprises d'évenmentiel Algériennes",
+    "op-com": "Plusieurs opérations commerciales en partenariat direct avec différents marques / organisateurs évenmentiel"
 }
