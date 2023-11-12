@@ -12,5 +12,20 @@
     "companyName": "Nom de l'entreprise: ",
     "role": "Rôle: ",
     "type": "Type de contrat: ",
-    "today": "Aujourd'hui"
+    "today": "Aujourd'hui",
+    "intern": "Stage",
+    "technicalDesignCap": "Conception technique: modélisation, écriture de documents de conception technique détaillée.",
+    "devCap": "Développement au niveau de la couche persistance, de la couche service, et des couches IHM.",
+    "frameworksCap": "Utilisation des framework tels que Node.js 10, Angular 7, AWS Amplify.",
+    "frontSkillsCap": "Développement HTML/CSS/JS/Typescript",
+    "awsCap": "Assistance déploiement Cloud AWS (Amplify Serverless, Cognito, Aurora (SQL), Cloudfront)",
+    "usthb": "Université des Sciences et de la Technologie 'Houari Boumediène'",
+    "l3-usthb": "Licence en télécommunications",
+    "m1-usthb": "Master 1 en réseaux et télécommunications",
+    "ubo": "Université de Bretagne-Occidentale",
+    "m1-ubo": "Master 1 en réseaux et télécommunications",
+    "upem": "Université Gustave Eiffel (ex Université Paris-Est Marne La Vallée)",
+    "m2-upem": "Master 2 en systèmes et services pour l'internet des objets (SSIO-IOT)",
+    "ing-network": "Ingénieur réseaux et télécommunications",
+    "free-job": "Artiste en spectacle vivant (freestyle football)"
 }
