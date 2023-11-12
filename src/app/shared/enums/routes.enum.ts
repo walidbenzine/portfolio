@@ -1,6 +1,6 @@
 export enum RoutesEnum {
     HOME = 'home',
-    SKILLS = 'skills',
+    PROJECTS = 'projects',
     EXPERIENCES = 'experiences',
     FORMATIONS = 'formations',
 }

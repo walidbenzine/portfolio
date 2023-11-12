@@ -1,4 +1,32 @@
-<div class="component">
-    <p>telecom works!</p>
-    <img class="logoIcon" [src]="getPathResource('algerie-telecom.png')">
-</div>
+<app-carousel-item [logos]="['algerie-telecom.jpg']" class="fullWidthHeight">
+    <ng-container buisness-info>
+        <div translate="companyName">
+            <span>Algérie Télécom</span>
+        </div>
+        <div translate="role">
+            <span translate="ing-network"></span>
+        </div>
+        <div translate="type">
+            <span translate="intern"></span>
+        </div>
+        <div class="dates">
+            <span>03/2017</span>
+            <span>-</span>
+            <span>06/2017</span>
+        </div>
+    </ng-container>
+
+    <ng-container infos>
+        <ul>
+            <li translate="intern-security">
+            <li translate="simul-networks">
+            <li translate="simul-security">
+            <li translate="solutions-security">
+            </li>
+        </ul>
+    </ng-container>
+
+    <ng-container skills>
+
+    </ng-container>
+</app-carousel-item>

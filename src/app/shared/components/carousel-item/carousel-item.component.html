@@ -1,0 +1,21 @@
+<div class="component">
+    <div class="buisness-wrapper">
+
+        <div class="logos">
+            <ng-container *ngFor="let logo of logos">
+                <img class="logoIcon" [src]="getPathResource(logo)">
+            </ng-container>
+        </div>
+
+        <div class="buisness-info">
+            <ng-content select="[buisness-info]"></ng-content>
+        </div>
+
+    </div>
+    <div class="infos">
+        <ng-content select="[infos]"></ng-content>
+    </div>
+    <div class="skills">
+        <ng-content select="[skills]"></ng-content>
+    </div>
+</div>

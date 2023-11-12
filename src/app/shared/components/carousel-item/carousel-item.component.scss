@@ -1,0 +1,94 @@
+:host::ng-deep {
+    .component {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    
+    .buisness-wrapper {
+        width: 25%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .buisness-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: larger;
+        gap: 20px;
+    }
+    
+    .infos {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+    
+    .skills {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .dates {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+    
+    .logos {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .logoIcon {
+        border-radius: 25%;
+        width: 130px;
+        height: 130px;
+      }
+    
+    @media screen and (max-width: 900px) {
+        .component {
+            flex-direction: column !important;
+        }
+    
+        .buisness-wrapper {
+            width: 100% !important;
+            height: 30% !important;
+        }
+    
+        .infos {
+            width: 100% !important;
+            height: 30% !important;
+        }
+    
+        .skills {
+            width: 100% !important;
+            height: 30% !important;
+        }
+    }
+}

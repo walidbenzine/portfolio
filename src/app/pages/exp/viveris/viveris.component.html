@@ -1,30 +1,26 @@
-<div class="component">
-    <div class="buisness-wrapper">
-
-        <img class="logoIcon" [src]="getPathResource('viveris.png')">
-
-        <div class="buisness-info">
-            <div translate="companyName">
-                <span>Viveris</span>
-            </div>
-            <div translate="role">
-                <span translate="job"></span>
-            </div>
-            <div translate="type">
-                <span>CDI</span>
-            </div>
-            <div class="dates">
-                <span>01/2021</span>
-                <span>-</span>
-                <span translate="today"></span>
-            </div>
+<app-carousel-item [logos]="['viveris.png']" class="fullWidthHeight">
+    <ng-container buisness-info>
+        <div translate="companyName">
+            <span>Viveris</span>
         </div>
+        <div translate="role">
+            <span translate="job"></span>
+        </div>
+        <div translate="type">
+            <span>CDI</span>
+        </div>
+        <div class="dates">
+            <span>01/2021</span>
+            <span>-</span>
+            <span translate="today"></span>
+        </div>
+    </ng-container>
 
-    </div>
-    <div class="infos">
-        <span>infos bloc</span>
-    </div>
-    <div class="skills">
-        <span>competences bloc</span>
-    </div>
-</div>
+    <ng-container infos>
+
+    </ng-container>
+
+    <ng-container skills>
+
+    </ng-container>
+</app-carousel-item>

@@ -1,5 +1,35 @@
-<div class="component">
-    <p>free works!</p>
+<app-carousel-item [logos]="['free.jpg']" class="fullWidthHeight">
+    <ng-container buisness-info>
+        <div translate="companyName">
+            <span>NFG Crew</span>
+        </div>
+        <div translate="role">
+            <span translate="free-job"></span>
+        </div>
+        <div translate="type">
+            <span>Freelance</span>
+        </div>
+        <div class="dates">
+            <span>06/2012</span>
+            <span>-</span>
+            <span>08/2018</span>
+        </div>
+    </ng-container>
 
-    <mat-icon>sports_soccer</mat-icon>
-</div>
+    <ng-container infos>
+        <ul>
+            <li translate="nfg-crew"></li>
+            <li translate="op-com"></li>
+        </ul>
+    </ng-container>
+
+    <ng-container skills>
+        <iframe class="youtube" src="https://www.youtube.com/embed/wvraBB6n8ow?si=XxfmoFvzsE95CjzF" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+        </iframe>
+
+        <iframe class="youtube" src="https://www.youtube.com/embed/uwj7EFPFNVI?si=wZZjH4o0Clls_Dli" frameborder="0" allowfullscreen
+         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+        </iframe>
+    </ng-container>
+</app-carousel-item>

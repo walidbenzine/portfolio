@@ -9,7 +9,7 @@ import { GravityButtonService } from '../../services/gravity-button.service';
 })
 export class NavbarComponent implements AfterViewInit {
 
-  pages = [RoutesEnum.HOME, RoutesEnum.SKILLS, RoutesEnum.EXPERIENCES, RoutesEnum.FORMATIONS];
+  pages = [RoutesEnum.HOME, RoutesEnum.EXPERIENCES, RoutesEnum.FORMATIONS, RoutesEnum.PROJECTS];
 
   constructor(
     private gravityButtonService: GravityButtonService,

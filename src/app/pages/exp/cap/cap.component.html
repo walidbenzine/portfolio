@@ -1,5 +1,32 @@
-<div class="component">
-    <p>cap works!</p>
+<app-carousel-item [logos]="['capgemini.jpg']" class="fullWidthHeight">
+    <ng-container buisness-info>
+        <div translate="companyName">
+            <span>Capgemini</span>
+        </div>
+        <div translate="role">
+            <span translate="job"></span>
+        </div>
+        <div translate="type">
+            <span translate="intern"></span>
+        </div>
+        <div class="dates">
+            <span>06/2020</span>
+            <span>-</span>
+            <span>11/2020</span>
+        </div>
+    </ng-container>
 
-    <img class="logoIcon" [src]="getPathResource('capgemini.jpg')">
-</div>
+    <ng-container infos>
+        <ul>
+            <li translate="technicalDesignCap"></li>
+            <li translate="devCap"></li>
+            <li translate="frameworksCap"></li>
+            <li translate="frontSkillsCap"></li>
+            <li translate="awsCap"></li>
+        </ul>
+    </ng-container>
+
+    <ng-container skills>
+
+    </ng-container>
+</app-carousel-item>

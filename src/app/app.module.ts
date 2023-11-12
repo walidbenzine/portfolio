@@ -10,7 +10,6 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { NavItemComponent } from './shared/components/nav-item/nav-item.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './pages/home/home.component';
-import { SkillsComponent } from './pages/skills/skills.component';
 import { ExpComponent } from './pages/exp/exp.component';
 import { FormComponent } from './pages/form/form.component';
 import { LanguageSelectorComponent } from './shared/components/language-selector/language-selector.component';
@@ -30,6 +29,8 @@ import { CarouselItemElement } from './shared/directives/caroussel-item-element.
 import { UpemComponent } from './pages/form/upem/upem.component';
 import { UboComponent } from './pages/form/ubo/ubo.component';
 import { UsthbComponent } from './pages/form/usthb/usthb.component';
+import { CarouselItemComponent } from './shared/components/carousel-item/carousel-item.component';
+import { ProjectsComponent } from './pages/projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,6 @@ import { UsthbComponent } from './pages/form/usthb/usthb.component';
     NavbarComponent,
     NavItemComponent,
     HomeComponent,
-    SkillsComponent,
     ExpComponent,
     FormComponent,
     LanguageSelectorComponent,
@@ -55,6 +55,8 @@ import { UsthbComponent } from './pages/form/usthb/usthb.component';
     UpemComponent,
     UboComponent,
     UsthbComponent,
+    CarouselItemComponent,
+    ProjectsComponent,
   ],
   imports: [
     BrowserModule,
