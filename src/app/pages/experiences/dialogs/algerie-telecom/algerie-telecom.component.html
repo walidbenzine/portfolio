@@ -1,0 +1,23 @@
+<app-dialog
+  imgPath="icons/algerie-telecom.webp"
+  [firstTitle]="translations().get(translatesEnum.ALGERIE_TELECOM)"
+  [subtitle]="subTitle()"
+  startDate="03/2017"
+  endDate="05/2017"
+>
+  <p>{{ translations().get(translatesEnum.ALGERIE_TELECOM_PARAGRAPH) }}</p>
+
+  <h3>{{ translations().get(translatesEnum.SKILLS_ACQUIRED) }}</h3>
+
+  <ul>
+    @for (bullet of bulletList; track bullet) {
+      <li>{{ translations().get(bullet) }}</li>
+    }
+  </ul>
+
+  <div class="chips">
+    @for (chip of chips; track chip) {
+      <mat-chip color="primary">{{ translations().get(chip) }}</mat-chip>
+    }
+  </div>
+</app-dialog>

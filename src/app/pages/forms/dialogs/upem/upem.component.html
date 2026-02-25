@@ -1,0 +1,18 @@
+<app-dialog
+  imgPath="icons/upem.webp"
+  [firstTitle]="translations().get(translatesEnum.UPEM)"
+  [subtitle]="translations().get(translatesEnum.M2SSIO)"
+  startDate="09/2019"
+  endDate="06/2020"
+>
+  <p>{{ translations().get(translatesEnum.UPEMPARAGRAPH1) }}</p>
+  <p>{{ translations().get(translatesEnum.UPEMPARAGRAPH2) }}</p>
+
+  <h3>{{ translations().get(translatesEnum.SKILLS_ACQUIRED) }}</h3>
+
+  <ul>
+    @for (bullet of bulletList; track bullet) {
+      <li>{{ translations().get(bullet) }}</li>
+    }
+  </ul>
+</app-dialog>

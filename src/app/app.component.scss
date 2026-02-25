@@ -1,0 +1,27 @@
+.app-root {
+  position: relative;
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.overlay * {
+  pointer-events: auto;
+}
+
+app-joystick {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+
+  justify-self: center;
+  opacity: 70%;
+}

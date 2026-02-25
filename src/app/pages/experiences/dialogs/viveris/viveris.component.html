@@ -1,0 +1,23 @@
+<app-dialog
+  imgPath="icons/viveris.webp"
+  [firstTitle]="translations().get(translatesEnum.VIVERIS)"
+  [subtitle]="subTitle()"
+  startDate="01/2021"
+>
+  <p>{{ translations().get(translatesEnum.VIVERIS_PARAGRAPH1) }}</p>
+  <p>{{ translations().get(translatesEnum.VIVERIS_PARAGRAPH2) }}</p>
+
+  <h3>{{ translations().get(translatesEnum.SKILLS_ACQUIRED) }}</h3>
+
+  <ul>
+    @for (bullet of bulletList; track bullet) {
+      <li>{{ translations().get(bullet) }}</li>
+    }
+  </ul>
+
+  <div class="chips">
+    @for (chip of chips; track chip) {
+      <mat-chip color="primary">{{ translations().get(chip) }}</mat-chip>
+    }
+  </div>
+</app-dialog>

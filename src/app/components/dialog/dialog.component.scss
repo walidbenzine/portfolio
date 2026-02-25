@@ -1,0 +1,82 @@
+@use "@angular/material" as mat;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+button {
+  float: right;
+  top: 10px;
+}
+
+img {
+  width: 150px;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+
+  .titlesDiv {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    .firstTitle {
+      font-weight: 500;
+      font-size: 25px;
+    }
+
+    .subtitle {
+      color: gray;
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  img {
+    width: 80px;
+  }
+
+  .titleContainer {
+    gap: 10px;
+
+    .titlesDiv {
+      flex-direction: column;
+      gap: 10px;
+      line-height: 15px;
+
+      .firstTitle {
+        font-size: medium;
+      }
+
+      .subtitle {
+        font-size: small;
+      }
+    }
+  }
+}
+
+mat-dialog-content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-bottom: 10px;
+
+  @media (min-width: 1200px) {
+    @include mat.dialog-overrides(
+      (
+        supporting-text-size: x-large,
+        supporting-text-line-height: 30px,
+      )
+    );
+  }
+}
+
+mat-dialog-content::-webkit-scrollbar {
+  display: none;
+}

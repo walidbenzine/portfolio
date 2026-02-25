@@ -1,0 +1,42 @@
+<app-dialog
+  imgPath="icons/nfg.webp"
+  [firstTitle]="translations().get(translatesEnum.NFG)"
+  [subtitle]="subTitle()"
+  startDate="06/2012"
+  endDate="08/2018"
+>
+  <p>{{ translations().get(translatesEnum.NFG_PARAGRAPH) }}</p>
+
+  <h3>{{ translations().get(translatesEnum.SKILLS_ACQUIRED) }}</h3>
+
+  <ul>
+    @for (bullet of bulletList; track bullet) {
+      <li>{{ translations().get(bullet) }}</li>
+    }
+  </ul>
+
+  <div class="youtubeVideo">
+    <iframe
+      src="https://www.youtube.com/embed/wvraBB6n8ow?si=yhgUv9EnztQ6WHh3"
+      title="Walid Youtube Video"
+      frameborder="0"
+      allow="
+        accelerometer;
+        autoplay;
+        clipboard-write;
+        encrypted-media;
+        gyroscope;
+        picture-in-picture;
+        web-share;
+      "
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <div class="chips">
+    @for (chip of chips; track chip) {
+      <mat-chip color="primary">{{ translations().get(chip) }}</mat-chip>
+    }
+  </div>
+</app-dialog>

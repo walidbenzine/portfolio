@@ -1,0 +1,18 @@
+<app-dialog
+  imgPath="icons/usthb.webp"
+  [firstTitle]="translations().get(translatesEnum.USTHB2)"
+  [subtitle]="translations().get(translatesEnum.M1RT)"
+  startDate="09/2017"
+  endDate="06/2018"
+>
+  <p>{{ translations().get(translatesEnum.USTHB2PARAGRAPH1) }}</p>
+  <p>{{ translations().get(translatesEnum.USTHB2PARAGRAPH2) }}</p>
+
+  <h3>{{ translations().get(translatesEnum.SKILLS_ACQUIRED) }}</h3>
+
+  <ul>
+    @for (bullet of bulletList; track bullet) {
+      <li>{{ translations().get(bullet) }}</li>
+    }
+  </ul>
+</app-dialog>

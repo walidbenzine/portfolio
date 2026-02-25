@@ -1,0 +1,20 @@
+<div mat-dialog-title>
+  <button mat-icon-button aria-label="close dialog" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+  <div class="titleContainer">
+    <img [src]="imgPath()" />
+    <div class="titlesDiv">
+      <span class="firstTitle">{{ firstTitle() }}</span>
+      <span class="subtitle">{{ subtitle() }}</span>
+      <app-period
+        class="subtitle"
+        [start]="startDate()"
+        [end]="endDate()"
+      ></app-period>
+    </div>
+  </div>
+</div>
+<mat-dialog-content>
+  <ng-content></ng-content>
+</mat-dialog-content>
