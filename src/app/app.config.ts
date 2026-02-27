@@ -8,7 +8,7 @@ import { provideTranslateService, TranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
-import { LanguagesEnum } from './enums/languages.enum';
+import { LanguagesEnum } from './shared/enums/languages.enum';
 
 export const appConfig: ApplicationConfig = {
   providers: [

@@ -1,0 +1,12 @@
+@if (loaderService.isLoading()) {
+  <div class="loader-overlay">
+    <div class="loader-backdrop"></div>
+
+    <div class="loader-content">
+      <div class="loader-text">
+        {{ translations().get(translatesEnum.LOADING) }}
+        <span class="dots"></span>
+      </div>
+    </div>
+  </div>
+}

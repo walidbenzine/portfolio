@@ -1,0 +1,20 @@
+<app-dialog
+  imgPath="icons/ubo.webp"
+  [firstTitle]="translations().get(translatesEnum.UBO)"
+  [subtitle]="translations().get(translatesEnum.M1RT)"
+  startDate="09/2018"
+  endDate="06/2019"
+>
+  <p>{{ translations().get(translatesEnum.UBOPARAGRAPH1) }}</p>
+  <p>{{ translations().get(translatesEnum.UBOPARAGRAPH2) }}</p>
+
+  <h3>{{ translations().get(translatesEnum.SKILLS_ACQUIRED) }}</h3>
+
+  <ul>
+    @for (bullet of bulletList; track bullet) {
+      <li>{{ translations().get(bullet) }}</li>
+    }
+  </ul>
+
+  <app-chips [chips]="chips"></app-chips>
+</app-dialog>

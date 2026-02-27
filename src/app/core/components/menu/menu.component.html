@@ -1,0 +1,64 @@
+<button
+  mat-fab
+  (click)="$event.preventDefault(); snav.toggle()"
+  class="menu-button"
+>
+  <mat-icon>menu</mat-icon>
+</button>
+<mat-sidenav-container>
+  <mat-sidenav #snav mode="over" (backdropClick)="snav.close()">
+    <div class="menu-content">
+      <div class="routes">
+        <h3>{{ translations().get(translatesEnum.ROUTES) | uppercase }}</h3>
+        @for (route of routes; track route.route) {
+          <span routerLinkActive="activeRoute" [routerLink]="route.route">
+            {{ translations().get(route.label) }}</span
+          >
+        }
+      </div>
+
+      <div class="params">
+        <h3>{{ translations().get(translatesEnum.PARAMS) | uppercase }}</h3>
+
+        <mat-checkbox
+          [disabled]="joystickService.isJoystickDisabled()"
+          [checked]="joystickService.isVisible()"
+          (change)="joystickService.setVisibility($event.checked)"
+        >
+          {{ translations().get(translatesEnum.SHOW_JOYSTICK) }}
+        </mat-checkbox>
+
+        <mat-checkbox
+          [disabled]="gameSoundService.isGameSoundDisabled()"
+          [checked]="gameSoundService.isEnabled()"
+          (change)="gameSoundService.setEnability($event.checked)"
+        >
+          {{ translations().get(translatesEnum.GAME_SOUND) }}
+        </mat-checkbox>
+
+        <div class="selectors">
+          <app-theme-selector></app-theme-selector>
+          <app-language-selector></app-language-selector>
+        </div>
+      </div>
+
+      <div class="networks">
+        <h3>{{ translations().get(translatesEnum.NETWORKS) | uppercase }}</h3>
+
+        <div class="icons">
+          <a href="https://www.linkedin.com/in/benzine/" target="_blank">
+            <img src="icons/linkedin.webp" alt="Linkedin"
+          /></a>
+
+          <a href="https://github.com/walidbenzine" target="_blank">
+            <img src="icons/github.webp" alt="Github" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
