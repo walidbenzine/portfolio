@@ -1,0 +1,19 @@
+<app-dialog
+  imgPath="icons/capgemini.webp"
+  [firstTitle]="translations().get(translatesEnum.VOISIN_MALIN)"
+  [subtitle]="translations().get(translatesEnum.M2SSIO)"
+  startDate="06/2020"
+  endDate="09/2020"
+>
+  <p>{{ translations().get(translatesEnum.VOISIN_MALIN_PARAGRAPH) }}</p>
+
+  <h3>{{ translations().get(translatesEnum.SKILLS_ACQUIRED) }}</h3>
+
+  <ul>
+    @for (bullet of bulletList; track bullet) {
+      <li>{{ translations().get(bullet) }}</li>
+    }
+  </ul>
+
+  <app-chips [chips]="chips"></app-chips>
+</app-dialog>

@@ -42,11 +42,18 @@ export class UpemComponent extends BaseTranslationsComponent {
     TranslatesEnum.MYSQL,
     TranslatesEnum.HTML,
     TranslatesEnum.CSS,
+    TranslatesEnum.KOTLIN,
     TranslatesEnum.JAVASCRIPT,
     TranslatesEnum.OFFICE_PACK,
     TranslatesEnum.VM_WARE,
     TranslatesEnum.WIRESHARK,
     TranslatesEnum.ADAPTABILITY,
+    TranslatesEnum.RASPBERRY,
+    TranslatesEnum.ANDROID,
+    TranslatesEnum.MONGO_DB,
+    TranslatesEnum.ANDROID_STUDIO,
+    TranslatesEnum.API,
+    TranslatesEnum.SCIKIT_LEARN,
   ];
 
   protected getTextsList(): TranslatesEnum[] {

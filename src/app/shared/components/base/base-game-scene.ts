@@ -97,7 +97,7 @@ export abstract class BaseGameScene extends Phaser.Scene {
     this.mapConfig.backgroundMusicPath &&
       this.load.audio('bgMusic', this.mapConfig.backgroundMusicPath);
     Object.values(PlayerAnimationKeys).forEach((animation) => {
-      this.load.spritesheet(animation, `/player/${animation}.webp`, {
+      this.load.spritesheet(animation, `./player/${animation}.webp`, {
         frameWidth: 840,
         frameHeight: 720,
       });

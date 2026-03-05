@@ -2,7 +2,7 @@ import { MapConfigInterface } from '../../shared/interfaces/map-config.interface
 import { PlayerConfigInterface } from '../../shared/interfaces/player-config.interface';
 import { BaseGameScene } from '../../shared/components/base/base-game-scene';
 
-export class GamesGameScene extends BaseGameScene {
+export class ProjectsGameScene extends BaseGameScene {
   protected readonly mapConfig: MapConfigInterface = {
     path: './house/map.json',
     tilesPath: './house/tileset.webp',

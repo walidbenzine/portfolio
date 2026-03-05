@@ -31,6 +31,7 @@ export class CapgeminiComponent extends BaseTranslationsComponent {
     TranslatesEnum.AWS_COGNITO,
     TranslatesEnum.AWS_AURORA_SQL,
     TranslatesEnum.AWS_CLOUD_FRONT,
+    TranslatesEnum.AWS_LAMBDA,
     TranslatesEnum.MYSQL,
     TranslatesEnum.JIRA,
     TranslatesEnum.GIT,

@@ -36,8 +36,8 @@ export class LanguageSelectorComponent {
   private readonly languageService = inject(LanguageService);
 
   private readonly allLanguages = [
-    { key: LanguagesEnum.FR, img: 'icons/fr.webp' },
-    { key: LanguagesEnum.EN, img: 'icons/en.webp' },
+    { key: LanguagesEnum.FR, img: './icons/fr.webp' },
+    { key: LanguagesEnum.EN, img: './icons/en.webp' },
   ];
 
   readonly visibleLanguages = computed(() =>

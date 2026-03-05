@@ -4,8 +4,8 @@ import { BaseGameScene } from '../../shared/components/base/base-game-scene';
 
 export class ExperiencesGameScene extends BaseGameScene {
   protected readonly mapConfig: MapConfigInterface = {
-    path: '/house/map.json',
-    tilesPath: '/house/tileset.webp',
+    path: './house/map.json',
+    tilesPath: './house/tileset.webp',
     tileWidth: 64,
     tileHeight: 64,
     width: 3840,
@@ -17,7 +17,7 @@ export class ExperiencesGameScene extends BaseGameScene {
     interactivesLayerName: 'Interactions',
     decorationLayerName: 'Decorations',
     interactionDistance: 300,
-    backgroundMusicPath: '/music/bg-music.mp3',
+    backgroundMusicPath: './music/bg-music.mp3',
   };
 
   protected readonly playerConfig: PlayerConfigInterface = {

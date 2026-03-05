@@ -1,9 +1,59 @@
 import { Component } from '@angular/core';
+import { TranslatesEnum } from '../../shared/enums/translates.enum';
+import { GenericTextReplacementEnum } from '../../shared/enums/generic-text-replacement.enum';
+import { GenericInteractionsEnum } from '../../shared/enums/generic-interactions.enum';
+import { DialogComponentConfigInterface } from '../../shared/interfaces/dialog-component-config.interface';
+import { ScenesEnum } from '../../shared/enums/scenes.enum';
+import { ProjectsGameScene } from './projects-game-scene';
+import { ProjectsGameService } from './projects-game.service';
+import { BaseGameService } from '../../shared/components/base/base-game.service';
+import { BaseGameHouseComponent } from '../../shared/components/base/base-game-house.component';
+import { EasyPathComponent } from './dialogs/easy-path/easy-path.component';
+import { TmdbComponent } from './dialogs/tmdb/tmdb.component';
+import { VoisinMalinComponent } from './dialogs/voisin-malin/voisin-malin.component';
+import { JavaRmiComponent } from './dialogs/java-rmi/java-rmi.component';
 
 @Component({
   selector: 'app-projects',
-  imports: [],
-  templateUrl: './projects.component.html',
-  styleUrl: './projects.component.scss',
+  template: `<div id="projects-game-container"></div>`,
+  providers: [{ provide: BaseGameService, useExisting: ProjectsGameService }],
 })
-export class ProjectsComponent {}
+export class ProjectsComponent extends BaseGameHouseComponent {
+  protected readonly gameScene = ProjectsGameScene;
+  protected readonly scenesEnum = ScenesEnum.PROJECTS;
+  protected readonly mapWidth: number = 3840;
+  protected readonly mapHeight: number = 2560;
+  protected readonly gameContainer: string = 'projects-game-container';
+
+  protected dialogMap = new Map<
+    GenericInteractionsEnum,
+    DialogComponentConfigInterface
+  >([
+    [GenericInteractionsEnum.INTERACTION1, { component: VoisinMalinComponent }],
+    [GenericInteractionsEnum.INTERACTION2, { component: TmdbComponent }],
+    [GenericInteractionsEnum.INTERACTION3, { component: JavaRmiComponent }],
+    [GenericInteractionsEnum.INTERACTION4, { component: EasyPathComponent }],
+  ]);
+
+  protected override getTextsList(): TranslatesEnum[] {
+    return [
+      ...super.getTextsList(),
+      TranslatesEnum.EASY_PATH,
+      TranslatesEnum.TMDB,
+      TranslatesEnum.VOISIN_MALIN,
+      TranslatesEnum.JAVA_RMI,
+    ];
+  }
+
+  protected getTextsRemplacements(): Map<
+    TranslatesEnum,
+    GenericTextReplacementEnum
+  > {
+    return new Map<TranslatesEnum, GenericTextReplacementEnum>([
+      [TranslatesEnum.VOISIN_MALIN, GenericTextReplacementEnum.TEXT1],
+      [TranslatesEnum.TMDB, GenericTextReplacementEnum.TEXT2],
+      [TranslatesEnum.JAVA_RMI, GenericTextReplacementEnum.TEXT3],
+      [TranslatesEnum.EASY_PATH, GenericTextReplacementEnum.TEXT4],
+    ]);
+  }
+}

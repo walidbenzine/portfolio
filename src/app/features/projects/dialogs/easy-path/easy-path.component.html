@@ -1,0 +1,19 @@
+<app-dialog
+  imgPath="icons/easy-path.webp"
+  [firstTitle]="translations().get(translatesEnum.EASY_PATH)"
+  [subtitle]="translations().get(translatesEnum.M2SSIO)"
+  startDate="10/2019"
+  endDate="03/2020"
+>
+  <p>{{ translations().get(translatesEnum.EASY_PATH_PARAGRAPH) }}</p>
+
+  <h3>{{ translations().get(translatesEnum.SKILLS_ACQUIRED) }}</h3>
+
+  <ul>
+    @for (bullet of bulletList; track bullet) {
+      <li>{{ translations().get(bullet) }}</li>
+    }
+  </ul>
+
+  <app-chips [chips]="chips"></app-chips>
+</app-dialog>

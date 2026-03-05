@@ -3,4 +3,5 @@ export enum ScenesEnum {
   FORMS = 'formsScene',
   EXPERIENCES = 'experiencesScene',
   GAMES = 'gamesScene',
+  PROJECTS = 'projectsScene',
 }
