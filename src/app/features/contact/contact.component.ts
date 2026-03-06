@@ -20,6 +20,7 @@ import { LoaderService } from '../../core/services/loader.service';
 import { BaseTranslationsComponent } from '../../shared/components/base/base-translations.component';
 import { TranslatesEnum } from '../../shared/enums/translates.enum';
 import { ContactInterface } from '../../shared/interfaces/contact.interface';
+import { HttpErrorInterface } from '../../shared/interfaces/http-error.interface';
 
 @Component({
   selector: 'app-contact',
@@ -47,6 +48,7 @@ export class ContactComponent extends BaseTranslationsComponent {
     phone: '',
     subject: '',
     message: '',
+    company: '',
   });
 
   contactForm = form(this.contactModel, (schemaPath) => {
@@ -87,26 +89,37 @@ export class ContactComponent extends BaseTranslationsComponent {
       )
       .pipe(
         tap((result) => this.handleResult(result.success)),
-        catchError(() => of(this.showSnackBar(false))),
+        catchError((error: HttpErrorInterface) =>
+          of(this.showSnackBar(false, error)),
+        ),
         finalize(() => this.loaderService.hide()),
       )
       .subscribe();
   }
 
   private handleResult(success: boolean): void {
-    success && this.contactForm().reset();
+    success && this.contactForm().reset(this.contactModel());
     this.showSnackBar(success);
   }
 
-  private showSnackBar(success: boolean): void {
-    const message = success
-      ? TranslatesEnum.SUCCESS_CONTACT
-      : TranslatesEnum.FAILED_CONTACT;
-
+  private showSnackBar(success: boolean, error?: HttpErrorInterface): void {
     this.snackBar.open(
-      `${this.translations().get(message)}`,
+      this.getMessage(success, error),
       `${this.translations().get(TranslatesEnum.CLOSE)}`,
       { panelClass: success ? 'successSnackBar' : 'errorSnackBar' },
     );
+  }
+
+  private getMessage(success: boolean, error?: HttpErrorInterface): string {
+    if (error) {
+      return this.languageService.getTranslationWithParams(error.key, {
+        data: error.data,
+      })();
+    }
+
+    const message = success
+      ? TranslatesEnum.SUCCESS_CONTACT
+      : TranslatesEnum.FAILED_CONTACT;
+    return `${this.translations().get(message)}`;
   }
 }

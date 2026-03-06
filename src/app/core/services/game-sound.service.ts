@@ -17,7 +17,7 @@ export class GameSoundService {
     ),
   );
 
-  private readonly _isEnabled = signal(false);
+  private readonly _isEnabled = signal(false); // todo: mettre en true par défaut
 
   private readonly routesWithoutSound = [RoutesEnum.CONTACT];
 

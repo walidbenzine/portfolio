@@ -287,4 +287,5 @@ export enum TranslatesEnum {
   SUCCESS_CONTACT = 'successContact',
   FAILED_CONTACT = 'failedContact',
   CLOSE = 'close',
+  RATE_LIMIT = 'rateLimit',
 }

@@ -25,5 +25,9 @@
     textarea {
       min-height: 100px;
     }
+
+    .company {
+      display: none; // Bots detector
+    }
   }
 }
