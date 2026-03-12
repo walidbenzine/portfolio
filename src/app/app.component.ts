@@ -4,6 +4,7 @@ import { JoystickComponent } from './core/components/joystick/joystick.component
 import { MenuComponent } from './core/components/menu/menu.component';
 import { JoystickService } from './core/services/joystick.service';
 import { LoaderComponent } from './core/components/loader/loader.component';
+import { PhaserGameManagerService } from './core/services/phaser-game-manager.service';
 
 @Component({
   selector: 'app-root',
@@ -13,4 +14,5 @@ import { LoaderComponent } from './core/components/loader/loader.component';
 })
 export class AppComponent {
   public readonly joystickService = inject(JoystickService);
+  public readonly phaserGameManagerService = inject(PhaserGameManagerService);
 }

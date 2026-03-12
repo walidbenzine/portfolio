@@ -15,7 +15,7 @@ import { Usthb1Component } from './dialogs/usthb1/usthb1.component';
 
 @Component({
   selector: 'app-forms',
-  template: `<div id="forms-game-container"></div>`,
+  template: ``,
   providers: [{ provide: BaseGameService, useExisting: FormsGameService }],
 })
 export class FormsComponent extends BaseGameHouseComponent {
@@ -23,7 +23,6 @@ export class FormsComponent extends BaseGameHouseComponent {
   protected readonly scenesEnum = ScenesEnum.FORMS;
   protected readonly mapWidth: number = 3840;
   protected readonly mapHeight: number = 2560;
-  protected readonly gameContainer: string = 'forms-game-container';
 
   protected dialogMap = new Map<
     GenericInteractionsEnum,

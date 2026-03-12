@@ -9,7 +9,7 @@ import { GenericTextReplacementEnum } from '../../shared/enums/generic-text-repl
 
 @Component({
   selector: 'app-home',
-  template: `<div id="home-game-container"></div>`,
+  template: ``,
   providers: [{ provide: BaseGameService, useExisting: HomeGameService }],
 })
 export class HomeComponent extends BaseGameComponent {
@@ -17,7 +17,6 @@ export class HomeComponent extends BaseGameComponent {
   protected readonly scenesEnum = ScenesEnum.HOME;
   protected readonly mapWidth: number = 5120;
   protected readonly mapHeight: number = 2560;
-  protected readonly gameContainer: string = 'home-game-container';
 
   protected override getTextsList(): TranslatesEnum[] {
     return [

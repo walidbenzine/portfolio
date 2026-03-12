@@ -14,7 +14,7 @@ import { MemoryComponent } from './dialogs/memory/memory.component';
 
 @Component({
   selector: 'app-games',
-  template: `<div id="games-game-container"></div>`,
+  template: ``,
   providers: [{ provide: BaseGameService, useExisting: GamesGameService }],
 })
 export class GamesComponent extends BaseGameHouseComponent {
@@ -22,7 +22,6 @@ export class GamesComponent extends BaseGameHouseComponent {
   protected readonly scenesEnum = ScenesEnum.GAMES;
   protected readonly mapWidth: number = 3840;
   protected readonly mapHeight: number = 2560;
-  protected readonly gameContainer: string = 'games-game-container';
 
   protected dialogMap = new Map<
     GenericInteractionsEnum,

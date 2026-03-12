@@ -17,6 +17,12 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
+vi.mock('phaser', () => {
+  return {
+    default: {},
+  };
+});
+
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({

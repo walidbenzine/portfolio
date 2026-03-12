@@ -15,7 +15,7 @@ import { AlgerieTelecomComponent } from './dialogs/algerie-telecom/algerie-telec
 
 @Component({
   selector: 'app-experiences',
-  template: `<div id="experiences-game-container"></div>`,
+  template: ``,
   providers: [
     { provide: BaseGameService, useExisting: ExperiencesGameService },
   ],
@@ -25,7 +25,6 @@ export class ExperiencesComponent extends BaseGameHouseComponent {
   protected readonly scenesEnum = ScenesEnum.EXPERIENCES;
   protected readonly mapWidth: number = 3840;
   protected readonly mapHeight: number = 2560;
-  protected readonly gameContainer: string = 'experiences-game-container';
 
   protected dialogMap = new Map<
     GenericInteractionsEnum,

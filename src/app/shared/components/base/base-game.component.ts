@@ -1,5 +1,8 @@
 import { Directive, effect, inject, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { GameSoundService } from '../../../core/services/game-sound.service';
 import { GameEventsEnum } from '../../enums/game-events.enum';
+import { GenericTextReplacementEnum } from '../../enums/generic-text-replacement.enum';
 import { ScenesEnum } from '../../enums/scenes.enum';
 import { TranslatesEnum } from '../../enums/translates.enum';
 import {
@@ -7,30 +10,26 @@ import {
   onGameEvent,
   removeGameEventListener,
 } from '../../helpers/game-event.helper';
+import { GameRouteConfigInterface } from '../../interfaces/game-route-config.interface';
+import { OnInteractInterface } from '../../interfaces/on-interact.interface';
 import { XYInterface } from '../../interfaces/xy.interface';
+import { PhaserGameManagerService } from '../../../core/services/phaser-game-manager.service';
 import { BaseGameScene } from './base-game-scene';
 import { BaseGameService } from './base-game.service';
-import { GameSoundService } from '../../../core/services/game-sound.service';
-import { OnInteractInterface } from '../../interfaces/on-interact.interface';
-import { Router } from '@angular/router';
 import { BaseTranslationsComponent } from './base-translations.component';
-import { LoaderService } from '../../../core/services/loader.service';
-import { GenericTextReplacementEnum } from '../../enums/generic-text-replacement.enum';
 
 @Directive()
 export abstract class BaseGameComponent
   extends BaseTranslationsComponent
   implements OnInit, OnDestroy
 {
-  private game!: Phaser.Game;
   private readonly gameService = inject(BaseGameService);
-  private readonly loaderService = inject(LoaderService);
   private readonly gameSoundService = inject(GameSoundService);
+  private readonly phaserGameManager = inject(PhaserGameManagerService);
   protected readonly router = inject(Router);
 
   protected abstract gameScene: typeof BaseGameScene;
   protected abstract scenesEnum: ScenesEnum;
-  protected abstract readonly gameContainer: string;
 
   constructor() {
     super();
@@ -68,50 +67,30 @@ export abstract class BaseGameComponent
   }
 
   ngOnInit(): void {
-    this.loaderService.show();
     this.initGameScene();
     this.subscribeToGameEvents();
   }
 
   private initGameScene(): void {
-    this.game = new Phaser.Game(this.getGameConfig());
-
-    this.game.events.once(Phaser.Core.Events.READY, () => {
-      this.addSceneToGame();
-      this.hideLoaderOnSceenCreated();
-    });
+    this.phaserGameManager.activateScene(
+      this.getRouteConfig(),
+      this.getSceneInitData(),
+    );
   }
 
-  private getGameConfig(): Phaser.Types.Core.GameConfig {
+  private getSceneInitData() {
     return {
-      type: Phaser.WEBGL,
-      pixelArt: true,
-      roundPixels: true,
-      physics: {
-        default: 'arcade',
-        arcade: {
-          debug: false,
-        },
-      },
-      scale: {
-        mode: Phaser.Scale.RESIZE,
-        autoCenter: Phaser.Scale.CENTER_BOTH,
-      },
-      render: {
-        antialias: false,
-        pixelArt: true,
-        roundPixels: true,
-      },
-      parent: this.gameContainer,
-    };
-  }
-
-  private addSceneToGame(): void {
-    this.game.scene.add(this.scenesEnum as string, this.gameScene, true, {
       previousPlayerPosition: this.gameService.getPlayerPosition(),
       textsMap: this.getTextsMap(this.translations()),
       isSoundPaused: !this.gameSoundService.isEnabled(),
-    });
+    };
+  }
+
+  private getRouteConfig(): GameRouteConfigInterface {
+    return {
+      sceneKey: this.scenesEnum,
+      sceneClass: this.gameScene,
+    };
   }
 
   private subscribeToGameEvents(): void {
@@ -131,15 +110,8 @@ export abstract class BaseGameComponent
     e.detail.route && this.router.navigate([e.detail.route]);
   };
 
-  private hideLoaderOnSceenCreated(): void {
-    const scene = this.game.scene.getScene(this.scenesEnum);
-    scene.events.once(Phaser.Scenes.Events.CREATE, () => {
-      this.loaderService.hide();
-    });
-  }
-
   ngOnDestroy(): void {
-    this.game?.destroy(true);
+    this.phaserGameManager.deactivateScene(this.scenesEnum as string);
     removeGameEventListener(
       GameEventsEnum.SAVE_PLAYER_POSITION,
       this.playerPositionHandler,

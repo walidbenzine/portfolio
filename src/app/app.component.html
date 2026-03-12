@@ -1,6 +1,12 @@
 <div class="app-root">
   <app-loader></app-loader>
   <app-menu>
+    <div
+      [style.display]="
+        phaserGameManagerService.shouldHideGameContainerDiv() ? 'none' : 'block'
+      "
+      id="phaser-game-container"
+    ></div>
     <router-outlet />
 
     <div class="overlay">

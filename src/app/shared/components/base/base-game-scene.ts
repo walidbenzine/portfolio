@@ -89,6 +89,18 @@ export abstract class BaseGameScene extends Phaser.Scene {
   protected minVisibleHeightCoefficient = 3;
   protected maxVisibleHeightCoefficient = 2;
 
+  private get mapKey(): string {
+    return `map:${this.mapConfig.path}`;
+  }
+
+  private get tileKey(): string {
+    return `tiles:${this.mapConfig.tilesPath}`;
+  }
+
+  private get bgMusicKey(): string {
+    return `bgMusic:${this.mapConfig.backgroundMusicPath}`;
+  }
+
   protected init(data: InitSceneInterface): void {
     this.previousPlayerPosition = data.previousPlayerPosition;
     this.textsMap = data.textsMap;
@@ -96,18 +108,34 @@ export abstract class BaseGameScene extends Phaser.Scene {
   }
 
   preload(): void {
-    this.load.image('tiles', this.mapConfig.tilesPath);
-    this.load.once(Phaser.Loader.Events.COMPLETE, () => {
-      this.textures.get('tiles')?.setFilter(Phaser.Textures.FilterMode.NEAREST);
-    });
-    this.load.tilemapTiledJSON('map', this.mapConfig.path);
-    this.mapConfig.backgroundMusicPath &&
-      this.load.audio('bgMusic', this.mapConfig.backgroundMusicPath);
+    if (!this.textures.exists(this.tileKey)) {
+      this.load.image(this.tileKey, this.mapConfig.tilesPath);
+    }
+
+    if (!this.cache.tilemap.exists(this.mapKey)) {
+      this.load.tilemapTiledJSON(this.mapKey, this.mapConfig.path);
+    }
+
+    if (
+      this.mapConfig.backgroundMusicPath &&
+      !this.cache.audio.exists(this.bgMusicKey)
+    ) {
+      this.load.audio(this.bgMusicKey, this.mapConfig.backgroundMusicPath);
+    }
+
     Object.values(PlayerAnimationKeys).forEach((animation) => {
-      this.load.spritesheet(animation, `./player/${animation}.webp`, {
-        frameWidth: 840,
-        frameHeight: 720,
-      });
+      if (!this.textures.exists(animation)) {
+        this.load.spritesheet(animation, `./player/${animation}.webp`, {
+          frameWidth: 840,
+          frameHeight: 720,
+        });
+      }
+    });
+
+    this.load.once(Phaser.Loader.Events.COMPLETE, () => {
+      this.textures
+        .get(this.tileKey)
+        .setFilter(Phaser.Textures.FilterMode.NEAREST);
     });
   }
 
@@ -115,7 +143,7 @@ export abstract class BaseGameScene extends Phaser.Scene {
     this.map = this.createMap();
     this.tileset = this.map.addTilesetImage(
       this.mapConfig.tileSetName,
-      'tiles',
+      this.tileKey,
       this.mapConfig.tileWidth,
       this.mapConfig.tileWidth,
       this.mapConfig.tileMargin ?? 4,
@@ -139,7 +167,7 @@ export abstract class BaseGameScene extends Phaser.Scene {
 
   private createMap(): Phaser.Tilemaps.Tilemap {
     return this.make.tilemap({
-      key: 'map',
+      key: this.mapKey,
       tileWidth: this.mapConfig.tileWidth,
       tileHeight: this.mapConfig.tileHeight,
     });
@@ -230,8 +258,14 @@ export abstract class BaseGameScene extends Phaser.Scene {
   private createAnimations(): void {
     Object.entries(PLAYER_ANIMS).forEach(([state, directions]) => {
       Object.entries(directions).forEach(([direction, config]) => {
+        const animationKey = `${state}_${direction}`;
+
+        if (this.anims.exists(animationKey)) {
+          return;
+        }
+
         this.anims.create({
-          key: `${state}_${direction}`,
+          key: animationKey,
           frames: this.anims.generateFrameNumbers(config.key),
           frameRate: config.frameRate,
           repeat: -1,
@@ -321,7 +355,7 @@ export abstract class BaseGameScene extends Phaser.Scene {
 
   private createBackgroundMusic(): void {
     if (this.mapConfig.backgroundMusicPath) {
-      this.music = this.sound.add('bgMusic', {
+      this.music = this.sound.add(this.bgMusicKey, {
         volume: this.mapConfig.volume ?? 0.5,
         loop: true,
       });
@@ -416,6 +450,10 @@ export abstract class BaseGameScene extends Phaser.Scene {
   }
 
   private handleResize(gameSize: Phaser.Structs.Size): void {
+    if (!gameSize.width || !gameSize.height) {
+      return;
+    }
+
     const screenWidth = gameSize.width;
     const screenHeight = gameSize.height;
 
@@ -446,7 +484,7 @@ export abstract class BaseGameScene extends Phaser.Scene {
     let zoom = Math.min(zoomX, zoomY);
     zoom = Math.round(zoom * 100) / 100;
 
-    this.cameras.main.setZoom(zoom);
+    this.cameras.main?.setZoom(zoom);
   }
 
   override update(time: number, delta: number): void {
