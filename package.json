@@ -15,6 +15,8 @@
   "private": true,
   "dependencies": {
     "@abenzine/crack-the-code": "^1.0.4",
+    "@abenzine/guess-the-number": "^1.0.1",
+    "@abenzine/memory": "^1.0.1",
     "@angular/animations": "^21.1.5",
     "@angular/cdk": "~21.1.5",
     "@angular/common": "^21.1.5",

@@ -9,6 +9,8 @@ import { DialogComponentConfigInterface } from '../../shared/interfaces/dialog-c
 import { TranslatesEnum } from '../../shared/enums/translates.enum';
 import { GenericTextReplacementEnum } from '../../shared/enums/generic-text-replacement.enum';
 import { CrackTheCodeComponent } from './dialogs/crack-the-code/crack-the-code.component';
+import { GuessTheNumberComponent } from './dialogs/guess-the-number/guess-the-number.component';
+import { MemoryComponent } from './dialogs/memory/memory.component';
 
 @Component({
   selector: 'app-games',
@@ -30,13 +32,21 @@ export class GamesComponent extends BaseGameHouseComponent {
       GenericInteractionsEnum.INTERACTION1,
       { component: CrackTheCodeComponent },
     ],
-    // [GenericInteractionsEnum.INTERACTION2, { component: UpemComponent }],
-    // [GenericInteractionsEnum.INTERACTION3, { component: Usthb2Component }],
+    [
+      GenericInteractionsEnum.INTERACTION2,
+      { component: GuessTheNumberComponent },
+    ],
+    [GenericInteractionsEnum.INTERACTION3, { component: MemoryComponent }],
     // [GenericInteractionsEnum.INTERACTION4, { component: UboComponent }],
   ]);
 
   protected override getTextsList(): TranslatesEnum[] {
-    return [...super.getTextsList(), TranslatesEnum.CRACK_THE_CODE];
+    return [
+      ...super.getTextsList(),
+      TranslatesEnum.CRACK_THE_CODE,
+      TranslatesEnum.GUESS_THE_NUMBER,
+      TranslatesEnum.MEMORY,
+    ];
   }
 
   protected getTextsRemplacements(): Map<
@@ -45,8 +55,8 @@ export class GamesComponent extends BaseGameHouseComponent {
   > {
     return new Map<TranslatesEnum, GenericTextReplacementEnum>([
       [TranslatesEnum.CRACK_THE_CODE, GenericTextReplacementEnum.TEXT1],
-      // [TranslatesEnum.UPEM, GenericTextReplacementEnum.TEXT2],
-      // [TranslatesEnum.USTHB2, GenericTextReplacementEnum.TEXT3],
+      [TranslatesEnum.GUESS_THE_NUMBER, GenericTextReplacementEnum.TEXT2],
+      [TranslatesEnum.MEMORY, GenericTextReplacementEnum.TEXT3],
       // [TranslatesEnum.UBO, GenericTextReplacementEnum.TEXT4],
     ]);
   }
