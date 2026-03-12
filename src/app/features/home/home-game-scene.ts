@@ -26,4 +26,9 @@ export class HomeGameScene extends BaseGameScene {
     speed: 400,
     scale: 0.5,
   };
+
+  protected override minVisibleWidthCoefficient = 5;
+  protected override maxVisibleWidthCoefficient = 3;
+  protected override minVisibleHeightCoefficient = 3;
+  protected override maxVisibleHeightCoefficient = 2;
 }

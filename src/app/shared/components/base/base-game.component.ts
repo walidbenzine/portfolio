@@ -30,8 +30,6 @@ export abstract class BaseGameComponent
 
   protected abstract gameScene: typeof BaseGameScene;
   protected abstract scenesEnum: ScenesEnum;
-  protected abstract readonly mapWidth: number;
-  protected abstract readonly mapHeight: number;
   protected abstract readonly gameContainer: string;
 
   constructor() {
@@ -86,14 +84,9 @@ export abstract class BaseGameComponent
 
   private getGameConfig(): Phaser.Types.Core.GameConfig {
     return {
-      type: Phaser.AUTO,
-      width: this.mapWidth,
-      height: this.mapHeight,
-      render: {
-        pixelArt: true,
-        antialias: false,
-        roundPixels: true,
-      },
+      type: Phaser.WEBGL,
+      pixelArt: true,
+      roundPixels: true,
       physics: {
         default: 'arcade',
         arcade: {
@@ -101,39 +94,16 @@ export abstract class BaseGameComponent
         },
       },
       scale: {
-        mode: Phaser.Scale.ENVELOP,
+        mode: Phaser.Scale.RESIZE,
         autoCenter: Phaser.Scale.CENTER_BOTH,
-        width: this.getScaleWidth(),
-        height: this.getScaleHeight(),
+      },
+      render: {
+        antialias: false,
+        pixelArt: true,
+        roundPixels: true,
       },
       parent: this.gameContainer,
     };
-  }
-
-  protected getScaleWidth(): number {
-    return Math.min(
-      window.innerWidth * this.getScaleWidthCoefficient(),
-      this.mapWidth,
-    );
-  }
-
-  protected getScaleHeight(): number {
-    return Math.min(
-      window.innerHeight * this.getScaleHeightCoefficient(),
-      this.mapHeight,
-    );
-  }
-
-  protected getScaleWidthCoefficient(): number {
-    return this.getScaleCoefficient();
-  }
-
-  protected getScaleHeightCoefficient(): number {
-    return this.getScaleCoefficient();
-  }
-
-  protected getScaleCoefficient(): number {
-    return 1.5;
   }
 
   private addSceneToGame(): void {

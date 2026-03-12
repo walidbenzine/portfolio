@@ -84,6 +84,11 @@ export abstract class BaseGameScene extends Phaser.Scene {
   protected abstract readonly mapConfig: MapConfigInterface;
   protected abstract readonly playerConfig: PlayerConfigInterface;
 
+  protected minVisibleWidthCoefficient = 3;
+  protected maxVisibleWidthCoefficient = 2;
+  protected minVisibleHeightCoefficient = 3;
+  protected maxVisibleHeightCoefficient = 2;
+
   protected init(data: InitSceneInterface): void {
     this.previousPlayerPosition = data.previousPlayerPosition;
     this.textsMap = data.textsMap;
@@ -92,7 +97,9 @@ export abstract class BaseGameScene extends Phaser.Scene {
 
   preload(): void {
     this.load.image('tiles', this.mapConfig.tilesPath);
-    this.textures.get('tiles').setFilter(Phaser.Textures.FilterMode.NEAREST);
+    this.load.once(Phaser.Loader.Events.COMPLETE, () => {
+      this.textures.get('tiles')?.setFilter(Phaser.Textures.FilterMode.NEAREST);
+    });
     this.load.tilemapTiledJSON('map', this.mapConfig.path);
     this.mapConfig.backgroundMusicPath &&
       this.load.audio('bgMusic', this.mapConfig.backgroundMusicPath);
@@ -111,8 +118,8 @@ export abstract class BaseGameScene extends Phaser.Scene {
       'tiles',
       this.mapConfig.tileWidth,
       this.mapConfig.tileWidth,
-      this.mapConfig.tileMargin ?? 2,
-      this.mapConfig.tileSpacing ?? 2,
+      this.mapConfig.tileMargin ?? 4,
+      this.mapConfig.tileSpacing ?? 6,
     );
     this.createGroundLayer();
     this.createDecorationLayer();
@@ -127,6 +134,7 @@ export abstract class BaseGameScene extends Phaser.Scene {
     this.createBackgroundMusic();
     this.setBounds();
     this.manageGameEvents();
+    this.setReactiveResize();
   }
 
   private createMap(): Phaser.Tilemaps.Tilemap {
@@ -145,7 +153,16 @@ export abstract class BaseGameScene extends Phaser.Scene {
     layerName: string | undefined,
   ): Phaser.Tilemaps.TilemapLayer | null {
     if (this.map && this.tileset && layerName) {
-      return this.map.createLayer(layerName, this.tileset, 0, 0);
+      const layer = this.map.createLayer(layerName, this.tileset, 0, 0);
+
+      layer?.setScale(1);
+      layer?.setDepth(0);
+      layer?.setPipeline('TextureTintPipeline');
+
+      layer?.setOrigin(0, 0);
+      layer?.setCullPadding(2, 2);
+
+      return layer;
     }
 
     return null;
@@ -233,7 +250,7 @@ export abstract class BaseGameScene extends Phaser.Scene {
         wordWrap: { width: 700 },
         align: 'center',
       })
-      .setOrigin(0.5, 1)
+      .setOrigin(0.5, -1)
       .setDepth(1000)
       .setVisible(false)
       .setInteractive({ useHandCursor: true });
@@ -312,19 +329,12 @@ export abstract class BaseGameScene extends Phaser.Scene {
   }
 
   private setBounds(): void {
-    this.physics.world.setBounds(
-      0,
-      0,
-      this.mapConfig.width,
-      this.mapConfig.height,
-    );
+    const mapWidth = this.map.widthInPixels;
+    const mapHeight = this.map.heightInPixels;
 
-    this.cameras.main.setBounds(
-      0,
-      0,
-      this.mapConfig.width,
-      this.mapConfig.height,
-    );
+    this.physics.world.setBounds(0, 0, mapWidth, mapHeight);
+
+    this.cameras.main.setBounds(0, 0, mapWidth, mapHeight);
 
     this.cameras.main.setRoundPixels(true);
 
@@ -397,6 +407,48 @@ export abstract class BaseGameScene extends Phaser.Scene {
     );
   }
 
+  private setReactiveResize(): void {
+    this.scale.on(Phaser.Scale.Events.RESIZE, this.handleResize, this);
+    this.handleResize({
+      width: this.scale.width,
+      height: this.scale.height,
+    } as Phaser.Structs.Size);
+  }
+
+  private handleResize(gameSize: Phaser.Structs.Size): void {
+    const screenWidth = gameSize.width;
+    const screenHeight = gameSize.height;
+
+    const mapWidth = this.map.widthInPixels;
+    const mapHeight = this.map.heightInPixels;
+
+    const minVisibleWidth = mapWidth / this.minVisibleWidthCoefficient;
+    const maxVisibleWidth = mapWidth / this.maxVisibleWidthCoefficient;
+
+    const minVisibleHeight = mapHeight / this.minVisibleHeightCoefficient;
+    const maxVisibleHeight = mapHeight / this.maxVisibleHeightCoefficient;
+
+    const visibleWidth = Phaser.Math.Clamp(
+      screenWidth,
+      minVisibleWidth,
+      maxVisibleWidth,
+    );
+
+    const visibleHeight = Phaser.Math.Clamp(
+      screenHeight,
+      minVisibleHeight,
+      maxVisibleHeight,
+    );
+
+    const zoomX = screenWidth / visibleWidth;
+    const zoomY = screenHeight / visibleHeight;
+
+    let zoom = Math.min(zoomX, zoomY);
+    zoom = Math.round(zoom * 100) / 100;
+
+    this.cameras.main.setZoom(zoom);
+  }
+
   override update(time: number, delta: number): void {
     this.launchMusic();
     this.managePlayerPositionAndAnimations();
@@ -447,6 +499,9 @@ export abstract class BaseGameScene extends Phaser.Scene {
 
     const animKey = `${state}_${this.currentDirection}`;
     this.player.anims.play(animKey, true);
+
+    this.player.x = Math.round(this.player.x);
+    this.player.y = Math.round(this.player.y);
 
     this.cameras.main.scrollX = Math.round(this.cameras.main.scrollX);
     this.cameras.main.scrollY = Math.round(this.cameras.main.scrollY);

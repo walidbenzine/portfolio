@@ -32,8 +32,4 @@ export abstract class BaseGameHouseComponent extends BaseGameComponent {
   protected override getTextsList(): TranslatesEnum[] {
     return [...super.getTextsList(), TranslatesEnum.EXIT];
   }
-
-  protected override getScaleCoefficient(): number {
-    return Math.min(window.innerWidth, window.innerHeight) < 800 ? 2.5 : 1.5;
-  }
 }

@@ -24,7 +24,7 @@ export class ExperiencesGameScene extends BaseGameScene {
     size: { x: 128, y: 128 },
     offset: { x: 360, y: 433 },
     initialPosition: { x: 2530, y: 1000 },
-    speed: 500,
+    speed: 600,
     scale: 0.9,
   };
 }
