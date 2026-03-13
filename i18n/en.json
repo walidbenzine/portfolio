@@ -29,6 +29,7 @@
   "required": "Required field",
   "minLength": "Minimum {{length}} characters",
   "maxLength": "Maximum {{length}} characters",
+  "pattern": "Invalid format",
   "rateLimit": "Please wait {{data}} minutes before sending another message",
   "email": "Invalid email",
   "exit": "Exit",
