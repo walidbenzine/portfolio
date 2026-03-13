@@ -29,6 +29,7 @@
   "required": "Champ obligatoire",
   "minLength": "Minimum {{length}} caractères",
   "maxLength": "Maximum {{length}} caractères",
+  "pattern": "Format invalid",
   "rateLimit": "Veuillez attendre {{data}} minutes avant de renvoyer un message",
   "email": "Mail invalide",
   "exit": "Sortie",

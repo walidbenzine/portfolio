@@ -29,6 +29,7 @@ export enum TranslatesEnum {
   REQUIRED = 'required',
   MIN_LENGTH = 'minLength',
   MAX_LENGTH = 'maxLength',
+  PATTERN = 'pattern',
   EMAIL = 'email',
   EXIT = 'exit',
   YEAR = 'year',

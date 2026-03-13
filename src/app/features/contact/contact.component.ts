@@ -16,6 +16,7 @@ import {
   FormField,
   maxLength,
   minLength,
+  pattern,
   required,
 } from '@angular/forms/signals';
 import { MatButtonModule } from '@angular/material/button';
@@ -65,10 +66,11 @@ export class ContactComponent extends BaseTranslationsComponent {
     required(schemaPath.firstName);
     required(schemaPath.lastName);
     required(schemaPath.email);
-    email(schemaPath.email);
+    pattern(schemaPath.email, /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/);
     required(schemaPath.phone);
     minLength(schemaPath.phone, 10);
     maxLength(schemaPath.phone, 10);
+    pattern(schemaPath.phone, /^[0-9]{10}$/);
     required(schemaPath.subject);
     minLength(schemaPath.subject, 5);
     required(schemaPath.message);
