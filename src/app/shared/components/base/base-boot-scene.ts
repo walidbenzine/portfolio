@@ -2,6 +2,7 @@ import { GameAssets } from '../../enums/game-assets.enum';
 import { GameEventsEnum } from '../../enums/game-events.enum';
 import { PlayerAnimationKeys } from '../../enums/player-anumation-keys.enum';
 import { ScenesEnum } from '../../enums/scenes.enum';
+import Phaser from 'phaser';
 
 export class BaseBootScene extends Phaser.Scene {
   constructor() {

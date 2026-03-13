@@ -27,4 +27,21 @@ export class BaseGameHouseScene extends BaseGameScene {
     speed: 600,
     scale: 0.9,
   };
+
+  protected override getMinVisibleWidthCoefficient(): number {
+    return this.isBigScreen() ? 1 : 3;
+  }
+  protected override getMaxVisibleWidthCoefficient(): number {
+    return 2;
+  }
+  protected override getMinVisibleHeightCoefficient(): number {
+    return this.isBigScreen() ? 1 : 3;
+  }
+  protected override getMaxVisibleHeightCoefficient(): number {
+    return 2;
+  }
+
+  private isBigScreen(): boolean {
+    return window.innerHeight > 1000 || window.innerWidth > 1000;
+  }
 }

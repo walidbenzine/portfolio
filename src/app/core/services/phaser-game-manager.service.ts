@@ -1,11 +1,9 @@
 import { computed, inject, Injectable } from '@angular/core';
-import Phaser, { Scene } from 'phaser';
 import { InitSceneInterface } from '../../shared/interfaces/init-scene.interface';
 import { GameRouteConfigInterface } from '../../shared/interfaces/game-route-config.interface';
 import { LoaderService } from './loader.service';
 import { NavigationService } from './navigation.service';
 import { BaseBootScene } from '../../shared/components/base/base-boot-scene';
-import { ScenesEnum } from '../../shared/enums/scenes.enum';
 import { GameEventsEnum } from '../../shared/enums/game-events.enum';
 
 @Injectable({ providedIn: 'root' })

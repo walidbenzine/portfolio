@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -95,7 +95,7 @@ export class ContactComponent extends BaseTranslationsComponent {
       )
       .pipe(
         tap((result) => this.handleResult(result.success)),
-        catchError((error: HttpErrorInterface) =>
+        catchError((error: HttpErrorInterface | HttpErrorResponse) =>
           of(this.showSnackBar(false, error)),
         ),
         finalize(() => this.loaderService.hide()),
@@ -108,7 +108,10 @@ export class ContactComponent extends BaseTranslationsComponent {
     this.showSnackBar(success);
   }
 
-  private showSnackBar(success: boolean, error?: HttpErrorInterface): void {
+  private showSnackBar(
+    success: boolean,
+    error?: HttpErrorInterface | HttpErrorResponse,
+  ): void {
     this.snackBar.open(
       this.getMessage(success, error),
       `${this.translations().get(TranslatesEnum.CLOSE)}`,
@@ -116,8 +119,11 @@ export class ContactComponent extends BaseTranslationsComponent {
     );
   }
 
-  private getMessage(success: boolean, error?: HttpErrorInterface): string {
-    if (error) {
+  private getMessage(
+    success: boolean,
+    error?: HttpErrorInterface | HttpErrorResponse,
+  ): string {
+    if (error && !(error instanceof HttpErrorResponse)) {
       return this.languageService.getTranslationWithParams(error.key, {
         data: error.data,
       })();

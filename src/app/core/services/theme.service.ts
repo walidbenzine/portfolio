@@ -1,15 +1,17 @@
-import { Injectable, signal, computed, effect } from '@angular/core';
+import { Injectable, signal, computed, effect, inject } from '@angular/core';
+import { StorageEnum } from '../../shared/enums/storage.enum';
+import { StorageService } from './storage.service';
 
 export type ThemeMode = 'light' | 'dark' | 'system';
 
-const STORAGE_KEY = 'theme-preference';
-
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ThemeService {
+  private readonly storageService = inject(StorageService);
+
   private mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
   private userPreference = signal<ThemeMode>(
-    (localStorage.getItem(STORAGE_KEY) as ThemeMode) ?? 'system',
+    this.storageService.getItem<ThemeMode>(StorageEnum.THEME) ?? 'system',
   );
 
   private systemPrefersDark = signal(this.mediaQuery.matches);
@@ -37,7 +39,7 @@ export class ThemeService {
 
   private setTheme(mode: ThemeMode): void {
     this.userPreference.set(mode);
-    localStorage.setItem(STORAGE_KEY, mode);
+    this.storageService.setItem(StorageEnum.THEME, mode);
   }
 
   private applyTheme(theme: ThemeMode) {

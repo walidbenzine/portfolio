@@ -22,13 +22,25 @@ export class HomeGameScene extends BaseGameScene {
   protected readonly playerConfig: PlayerConfigInterface = {
     size: { x: 128, y: 128 },
     offset: { x: 360, y: 433 },
-    initialPosition: { x: 2530, y: 1000 },
+    initialPosition: { x: 2530, y: 1100 },
     speed: 400,
     scale: 0.5,
   };
 
-  protected override minVisibleWidthCoefficient = 5;
-  protected override maxVisibleWidthCoefficient = 3;
-  protected override minVisibleHeightCoefficient = 3;
-  protected override maxVisibleHeightCoefficient = 2;
+  protected override getMinVisibleWidthCoefficient(): number {
+    return this.isBigScreen() ? 4 : 6;
+  }
+  protected override getMaxVisibleWidthCoefficient(): number {
+    return 3;
+  }
+  protected override getMinVisibleHeightCoefficient(): number {
+    return this.isBigScreen() ? 2 : 4;
+  }
+  protected override getMaxVisibleHeightCoefficient(): number {
+    return 2;
+  }
+
+  private isBigScreen(): boolean {
+    return window.innerHeight > 1000 || window.innerWidth > 1000;
+  }
 }

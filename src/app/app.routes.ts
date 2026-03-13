@@ -43,4 +43,8 @@ export const routes: Routes = [
         (m) => m.ProjectsComponent,
       ),
   },
+  {
+    path: '**',
+    redirectTo: RoutesEnum.HOME,
+  },
 ];

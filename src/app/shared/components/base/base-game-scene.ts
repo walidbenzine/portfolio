@@ -75,11 +75,6 @@ export abstract class BaseGameScene extends Phaser.Scene {
   protected abstract readonly mapConfig: MapConfigInterface;
   protected abstract readonly playerConfig: PlayerConfigInterface;
 
-  protected minVisibleWidthCoefficient = 3;
-  protected maxVisibleWidthCoefficient = 2;
-  protected minVisibleHeightCoefficient = 3;
-  protected maxVisibleHeightCoefficient = 2;
-
   protected init(data: InitSceneInterface): void {
     this.previousPlayerPosition = data.previousPlayerPosition;
     this.textsMap = data.textsMap;
@@ -413,11 +408,11 @@ export abstract class BaseGameScene extends Phaser.Scene {
     const mapWidth = this.map.widthInPixels;
     const mapHeight = this.map.heightInPixels;
 
-    const minVisibleWidth = mapWidth / this.minVisibleWidthCoefficient;
-    const maxVisibleWidth = mapWidth / this.maxVisibleWidthCoefficient;
+    const minVisibleWidth = mapWidth / this.getMinVisibleWidthCoefficient();
+    const maxVisibleWidth = mapWidth / this.getMaxVisibleWidthCoefficient();
 
-    const minVisibleHeight = mapHeight / this.minVisibleHeightCoefficient;
-    const maxVisibleHeight = mapHeight / this.maxVisibleHeightCoefficient;
+    const minVisibleHeight = mapHeight / this.getMinVisibleHeightCoefficient();
+    const maxVisibleHeight = mapHeight / this.getMaxVisibleHeightCoefficient();
 
     const visibleWidth = Phaser.Math.Clamp(
       screenWidth,
@@ -435,10 +430,20 @@ export abstract class BaseGameScene extends Phaser.Scene {
     const zoomY = screenHeight / visibleHeight;
 
     let zoom = Math.min(zoomX, zoomY);
+
+    const zoomMin = Math.max(screenWidth / mapWidth, screenHeight / mapHeight);
+
+    zoom = Math.max(zoom, zoomMin);
+
     zoom = Math.round(zoom * 100) / 100;
 
     this.cameras.main?.setZoom(zoom);
   }
+
+  protected abstract getMinVisibleWidthCoefficient(): number;
+  protected abstract getMaxVisibleWidthCoefficient(): number;
+  protected abstract getMinVisibleHeightCoefficient(): number;
+  protected abstract getMaxVisibleHeightCoefficient(): number;
 
   override update(time: number, delta: number): void {
     this.launchMusic();

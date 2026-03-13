@@ -3,17 +3,29 @@ import { TranslateService } from '@ngx-translate/core';
 import { tap } from 'rxjs';
 import { TranslatesEnum } from '../../shared/enums/translates.enum';
 import { LanguagesEnum } from '../../shared/enums/languages.enum';
+import { StorageService } from './storage.service';
+import { StorageEnum } from '../../shared/enums/storage.enum';
 
 @Injectable({ providedIn: 'root' })
 export class LanguageService {
   private readonly translateService = inject(TranslateService);
-  private currentLanguage = signal<LanguagesEnum>(LanguagesEnum.FR);
+  private readonly storageService = inject(StorageService);
+
+  private currentLanguage = signal<LanguagesEnum>(
+    this.storageService.getItem<LanguagesEnum>(StorageEnum.LANGUAGE) ??
+      LanguagesEnum.FR,
+  );
   getLanguage = this.currentLanguage.asReadonly();
 
   setLanguage(lang: LanguagesEnum): void {
     this.translateService
       .use(lang)
-      .pipe(tap(() => this.currentLanguage.set(lang)))
+      .pipe(
+        tap(() => {
+          this.storageService.setItem(StorageEnum.LANGUAGE, lang);
+          this.currentLanguage.set(lang);
+        }),
+      )
       .subscribe();
   }
 
