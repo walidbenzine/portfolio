@@ -1,4 +1,8 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpStatusCode,
+} from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -95,7 +99,7 @@ export class ContactComponent extends BaseTranslationsComponent {
       )
       .pipe(
         tap((result) => this.handleResult(result.success)),
-        catchError((error: HttpErrorInterface | HttpErrorResponse) =>
+        catchError((error: HttpErrorResponse) =>
           of(this.showSnackBar(false, error)),
         ),
         finalize(() => this.loaderService.hide()),
@@ -108,10 +112,7 @@ export class ContactComponent extends BaseTranslationsComponent {
     this.showSnackBar(success);
   }
 
-  private showSnackBar(
-    success: boolean,
-    error?: HttpErrorInterface | HttpErrorResponse,
-  ): void {
+  private showSnackBar(success: boolean, error?: HttpErrorResponse): void {
     this.snackBar.open(
       this.getMessage(success, error),
       `${this.translations().get(TranslatesEnum.CLOSE)}`,
@@ -119,14 +120,15 @@ export class ContactComponent extends BaseTranslationsComponent {
     );
   }
 
-  private getMessage(
-    success: boolean,
-    error?: HttpErrorInterface | HttpErrorResponse,
-  ): string {
-    if (error && !(error instanceof HttpErrorResponse)) {
-      return this.languageService.getTranslationWithParams(error.key, {
-        data: error.data,
-      })();
+  private getMessage(success: boolean, error?: HttpErrorResponse): string {
+    if (error?.status === HttpStatusCode.TooManyRequests) {
+      const tooManyRequestError = error.error.error as HttpErrorInterface;
+      return this.languageService.getTranslationWithParams(
+        tooManyRequestError.key,
+        {
+          data: tooManyRequestError.data % 60,
+        },
+      )();
     }
 
     const message = success
