@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BaseGameComponent } from '../../shared/components/base/base-game.component';
-import { BaseGameService } from '../../shared/components/base/base-game.service';
+import { BasePlayerPositionService } from '../../shared/components/base/base-player-position.service';
 import { ScenesEnum } from '../../shared/enums/scenes.enum';
 import { TranslatesEnum } from '../../shared/enums/translates.enum';
 import { HomeGameService } from './home-game.service';
@@ -10,13 +10,14 @@ import { GenericTextReplacementEnum } from '../../shared/enums/generic-text-repl
 @Component({
   selector: 'app-home',
   template: ``,
-  providers: [{ provide: BaseGameService, useExisting: HomeGameService }],
+  providers: [
+    { provide: BasePlayerPositionService, useExisting: HomeGameService },
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent extends BaseGameComponent {
   protected readonly gameScene = HomeGameScene;
   protected readonly scenesEnum = ScenesEnum.HOME;
-  protected readonly mapWidth: number = 5120;
-  protected readonly mapHeight: number = 2560;
 
   protected override getTextsList(): TranslatesEnum[] {
     return [

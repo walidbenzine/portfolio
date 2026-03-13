@@ -15,7 +15,7 @@ import { OnInteractInterface } from '../../interfaces/on-interact.interface';
 import { XYInterface } from '../../interfaces/xy.interface';
 import { PhaserGameManagerService } from '../../../core/services/phaser-game-manager.service';
 import { BaseGameScene } from './base-game-scene';
-import { BaseGameService } from './base-game.service';
+import { BasePlayerPositionService } from './base-player-position.service';
 import { BaseTranslationsComponent } from './base-translations.component';
 
 @Directive()
@@ -23,7 +23,7 @@ export abstract class BaseGameComponent
   extends BaseTranslationsComponent
   implements OnInit, OnDestroy
 {
-  private readonly gameService = inject(BaseGameService);
+  private readonly gameService = inject(BasePlayerPositionService);
   private readonly gameSoundService = inject(GameSoundService);
   private readonly phaserGameManager = inject(PhaserGameManagerService);
   protected readonly router = inject(Router);

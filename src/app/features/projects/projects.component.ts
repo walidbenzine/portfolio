@@ -1,29 +1,29 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslatesEnum } from '../../shared/enums/translates.enum';
 import { GenericTextReplacementEnum } from '../../shared/enums/generic-text-replacement.enum';
 import { GenericInteractionsEnum } from '../../shared/enums/generic-interactions.enum';
 import { DialogComponentConfigInterface } from '../../shared/interfaces/dialog-component-config.interface';
 import { ScenesEnum } from '../../shared/enums/scenes.enum';
-import { ProjectsGameScene } from './projects-game-scene';
 import { ProjectsGameService } from './projects-game.service';
-import { BaseGameService } from '../../shared/components/base/base-game.service';
+import { BasePlayerPositionService } from '../../shared/components/base/base-player-position.service';
 import { BaseGameHouseComponent } from '../../shared/components/base/base-game-house.component';
 import { EasyPathComponent } from './dialogs/easy-path/easy-path.component';
 import { TmdbComponent } from './dialogs/tmdb/tmdb.component';
 import { VoisinMalinComponent } from './dialogs/voisin-malin/voisin-malin.component';
 import { JavaRmiComponent } from './dialogs/java-rmi/java-rmi.component';
+import { BaseGameHouseScene } from '../../shared/components/base/base-game-house-scene';
 
 @Component({
   selector: 'app-projects',
-  template: `<div id="projects-game-container"></div>`,
-  providers: [{ provide: BaseGameService, useExisting: ProjectsGameService }],
+  template: ``,
+  providers: [
+    { provide: BasePlayerPositionService, useExisting: ProjectsGameService },
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProjectsComponent extends BaseGameHouseComponent {
-  protected readonly gameScene = ProjectsGameScene;
+  protected readonly gameScene = BaseGameHouseScene;
   protected readonly scenesEnum = ScenesEnum.PROJECTS;
-  protected readonly mapWidth: number = 3840;
-  protected readonly mapHeight: number = 2560;
-  protected readonly gameContainer: string = 'projects-game-container';
 
   protected dialogMap = new Map<
     GenericInteractionsEnum,

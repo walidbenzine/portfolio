@@ -1,11 +1,12 @@
-import { MapConfigInterface } from '../../shared/interfaces/map-config.interface';
-import { PlayerConfigInterface } from '../../shared/interfaces/player-config.interface';
-import { BaseGameScene } from '../../shared/components/base/base-game-scene';
+import { GameAssets } from '../../enums/game-assets.enum';
+import { MapConfigInterface } from '../../interfaces/map-config.interface';
+import { PlayerConfigInterface } from '../../interfaces/player-config.interface';
+import { BaseGameScene } from './base-game-scene';
 
-export class ProjectsGameScene extends BaseGameScene {
+export class BaseGameHouseScene extends BaseGameScene {
   protected readonly mapConfig: MapConfigInterface = {
-    path: './house/map.json',
-    tilesPath: './house/tileset.webp',
+    map: GameAssets.HOUSE_MAP,
+    tileset: GameAssets.HOUSE_TILESET,
     tileWidth: 64,
     tileHeight: 64,
     width: 3840,
@@ -17,7 +18,6 @@ export class ProjectsGameScene extends BaseGameScene {
     interactivesLayerName: 'Interactions',
     decorationLayerName: 'Decorations',
     interactionDistance: 300,
-    backgroundMusicPath: './music/bg-music.mp3',
   };
 
   protected readonly playerConfig: PlayerConfigInterface = {

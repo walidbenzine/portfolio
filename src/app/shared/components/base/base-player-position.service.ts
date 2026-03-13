@@ -2,7 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { XYInterface } from '../../interfaces/xy.interface';
 
 @Injectable()
-export class BaseGameService {
+export class BasePlayerPositionService {
   private readonly playerPosition = signal<XYInterface | null>(null);
 
   setPlayerPosition(x: number, y: number): void {

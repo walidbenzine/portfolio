@@ -1,13 +1,13 @@
+import { GameAssets } from '../enums/game-assets.enum';
+
 export interface MapConfigInterface {
-  path: string;
-  tilesPath: string;
+  map: GameAssets;
+  tileset: GameAssets;
   tileWidth: number;
   tileHeight: number;
   tileSetName: string;
   width: number;
   height: number;
-  backgroundMusicPath?: string;
-  volume?: number;
 
   tileSpacing?: number;
   tileMargin?: number;

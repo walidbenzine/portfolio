@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BaseGameHouseComponent } from '../../shared/components/base/base-game-house.component';
-import { GamesGameScene } from './games-game.scene';
 import { ScenesEnum } from '../../shared/enums/scenes.enum';
 import { GenericInteractionsEnum } from '../../shared/enums/generic-interactions.enum';
-import { BaseGameService } from '../../shared/components/base/base-game.service';
+import { BasePlayerPositionService } from '../../shared/components/base/base-player-position.service';
 import { GamesGameService } from './games-game.service';
 import { DialogComponentConfigInterface } from '../../shared/interfaces/dialog-component-config.interface';
 import { TranslatesEnum } from '../../shared/enums/translates.enum';
@@ -11,17 +10,19 @@ import { GenericTextReplacementEnum } from '../../shared/enums/generic-text-repl
 import { CrackTheCodeComponent } from './dialogs/crack-the-code/crack-the-code.component';
 import { GuessTheNumberComponent } from './dialogs/guess-the-number/guess-the-number.component';
 import { MemoryComponent } from './dialogs/memory/memory.component';
+import { BaseGameHouseScene } from '../../shared/components/base/base-game-house-scene';
 
 @Component({
   selector: 'app-games',
   template: ``,
-  providers: [{ provide: BaseGameService, useExisting: GamesGameService }],
+  providers: [
+    { provide: BasePlayerPositionService, useExisting: GamesGameService },
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GamesComponent extends BaseGameHouseComponent {
-  protected readonly gameScene = GamesGameScene;
+  protected readonly gameScene = BaseGameHouseScene;
   protected readonly scenesEnum = ScenesEnum.GAMES;
-  protected readonly mapWidth: number = 3840;
-  protected readonly mapHeight: number = 2560;
 
   protected dialogMap = new Map<
     GenericInteractionsEnum,

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BaseGameService } from '../../shared/components/base/base-game.service';
+import { BasePlayerPositionService } from '../../shared/components/base/base-player-position.service';
 
 @Injectable({ providedIn: 'root' })
-export class GamesGameService extends BaseGameService {}
+export class GamesGameService extends BasePlayerPositionService {}

@@ -1,50 +1,45 @@
 import { computed, inject, Injectable } from '@angular/core';
-import Phaser from 'phaser';
+import Phaser, { Scene } from 'phaser';
 import { InitSceneInterface } from '../../shared/interfaces/init-scene.interface';
 import { GameRouteConfigInterface } from '../../shared/interfaces/game-route-config.interface';
 import { LoaderService } from './loader.service';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { RoutesEnum } from '../../shared/enums/routes.enum';
-import { filter, map } from 'rxjs';
+import { NavigationService } from './navigation.service';
+import { BaseBootScene } from '../../shared/components/base/base-boot-scene';
+import { ScenesEnum } from '../../shared/enums/scenes.enum';
+import { GameEventsEnum } from '../../shared/enums/game-events.enum';
 
 @Injectable({ providedIn: 'root' })
 export class PhaserGameManagerService {
   private readonly loaderService = inject(LoaderService);
-  private readonly router = inject(Router);
+  private readonly navigationService = inject(NavigationService);
 
-  private readonly routesWithoutScenes = [RoutesEnum.CONTACT];
   private readonly parentId = 'phaser-game-container';
+  private gameReady!: Promise<void>;
+  private resolveGameReady!: () => void;
 
   private game: Phaser.Game | null = null;
   private activeSceneKey: string | null = null;
 
-  private readonly currentUrlSignal = toSignal(
-    this.router.events.pipe(
-      filter((event) => event instanceof NavigationEnd),
-      map((event) => event.urlAfterRedirects),
-    ),
-  );
-
   shouldHideGameContainerDiv = computed(() =>
-    this.isRouteWithoutScene(this.currentUrlSignal()),
+    this.navigationService.isContactRoute(),
   );
 
-  private isRouteWithoutScene(route: string | undefined): boolean {
-    return this.routesWithoutScenes.some((r) => `/${r}` === route);
-  }
-
-  activateScene(
+  async activateScene(
     routeConfig: GameRouteConfigInterface,
     data: InitSceneInterface,
-  ): void {
+  ): Promise<void> {
     this.loaderService.show();
-    const game = this.ensureGame(routeConfig);
+    const game = this.ensureGame();
+    await this.gameReady;
     this.ensureSceneRegistered(routeConfig);
     this.game?.loop?.wake();
     this.showCanvas();
-    this.stopActiveScene(routeConfig.sceneKey as string);
-    game.scene.start(routeConfig.sceneKey as string, data);
+    this.stopActiveScene(routeConfig.sceneKey);
+    if (game.scene.isSleeping(routeConfig.sceneKey)) {
+      game.scene.wake(routeConfig.sceneKey);
+    } else {
+      game.scene.start(routeConfig.sceneKey, data);
+    }
     this.activeSceneKey = routeConfig.sceneKey as string;
 
     game.events.once(Phaser.Core.Events.POST_RENDER, () => {
@@ -63,13 +58,18 @@ export class PhaserGameManagerService {
     this.hideCanvas();
   }
 
-  private ensureGame(routeConfig: GameRouteConfigInterface): Phaser.Game {
+  private ensureGame(): Phaser.Game {
     if (this.game) {
       return this.game;
     }
 
+    this.gameReady = new Promise((resolve) => {
+      this.resolveGameReady = resolve;
+    });
+
     this.game = new Phaser.Game({
       type: Phaser.WEBGL,
+      scene: BaseBootScene,
       parent: this.parentId,
       pixelArt: true,
       roundPixels: true,
@@ -90,6 +90,10 @@ export class PhaserGameManagerService {
       },
     });
 
+    this.game.events.once(GameEventsEnum.BOOT_COMPLETED, () => {
+      this.resolveGameReady();
+    });
+
     return this.game;
   }
 
@@ -108,7 +112,7 @@ export class PhaserGameManagerService {
       this.activeSceneKey !== nextSceneKey &&
       this.game.scene.isActive(this.activeSceneKey)
     ) {
-      this.game.scene.stop(this.activeSceneKey);
+      this.game.scene.sleep(this.activeSceneKey);
     }
   }
 

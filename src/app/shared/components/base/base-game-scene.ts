@@ -15,6 +15,8 @@ import { InitSceneInterface } from '../../interfaces/init-scene.interface';
 import { SoundSettingInterface } from '../../interfaces/sound-setting.interface';
 import { VirtualInputInterface } from '../../interfaces/virtual-input.interface';
 import { VirtualInputEnum } from '../../enums/virtual-input.enum';
+import { PlayerAnimationKeys } from '../../enums/player-anumation-keys.enum';
+import { GameAssets } from '../../enums/game-assets.enum';
 
 const enum PlayerStateEnum {
   IDLE = 'idle',
@@ -25,17 +27,6 @@ const enum PlayerDirectionsEnum {
   DOWN = 'down',
   LEFT = 'left',
   RIGHT = 'right',
-}
-
-enum PlayerAnimationKeys {
-  IDLE_DOWN = 'idle_down',
-  IDLE_UP = 'idle_up',
-  IDLE_LEFT = 'idle_left',
-  IDLE_RIGHT = 'idle_right',
-  WALK_DOWN = 'walk_down',
-  WALK_UP = 'walk_up',
-  WALK_LEFT = 'walk_left',
-  WALK_RIGHT = 'walk_right',
 }
 
 const PLAYER_ANIMS = {
@@ -89,18 +80,6 @@ export abstract class BaseGameScene extends Phaser.Scene {
   protected minVisibleHeightCoefficient = 3;
   protected maxVisibleHeightCoefficient = 2;
 
-  private get mapKey(): string {
-    return `map:${this.mapConfig.path}`;
-  }
-
-  private get tileKey(): string {
-    return `tiles:${this.mapConfig.tilesPath}`;
-  }
-
-  private get bgMusicKey(): string {
-    return `bgMusic:${this.mapConfig.backgroundMusicPath}`;
-  }
-
   protected init(data: InitSceneInterface): void {
     this.previousPlayerPosition = data.previousPlayerPosition;
     this.textsMap = data.textsMap;
@@ -108,33 +87,9 @@ export abstract class BaseGameScene extends Phaser.Scene {
   }
 
   preload(): void {
-    if (!this.textures.exists(this.tileKey)) {
-      this.load.image(this.tileKey, this.mapConfig.tilesPath);
-    }
-
-    if (!this.cache.tilemap.exists(this.mapKey)) {
-      this.load.tilemapTiledJSON(this.mapKey, this.mapConfig.path);
-    }
-
-    if (
-      this.mapConfig.backgroundMusicPath &&
-      !this.cache.audio.exists(this.bgMusicKey)
-    ) {
-      this.load.audio(this.bgMusicKey, this.mapConfig.backgroundMusicPath);
-    }
-
-    Object.values(PlayerAnimationKeys).forEach((animation) => {
-      if (!this.textures.exists(animation)) {
-        this.load.spritesheet(animation, `./player/${animation}.webp`, {
-          frameWidth: 840,
-          frameHeight: 720,
-        });
-      }
-    });
-
     this.load.once(Phaser.Loader.Events.COMPLETE, () => {
       this.textures
-        .get(this.tileKey)
+        .get(this.mapConfig.tileset)
         .setFilter(Phaser.Textures.FilterMode.NEAREST);
     });
   }
@@ -143,7 +98,7 @@ export abstract class BaseGameScene extends Phaser.Scene {
     this.map = this.createMap();
     this.tileset = this.map.addTilesetImage(
       this.mapConfig.tileSetName,
-      this.tileKey,
+      this.mapConfig.tileset,
       this.mapConfig.tileWidth,
       this.mapConfig.tileWidth,
       this.mapConfig.tileMargin ?? 4,
@@ -167,7 +122,7 @@ export abstract class BaseGameScene extends Phaser.Scene {
 
   private createMap(): Phaser.Tilemaps.Tilemap {
     return this.make.tilemap({
-      key: this.mapKey,
+      key: this.mapConfig.map,
       tileWidth: this.mapConfig.tileWidth,
       tileHeight: this.mapConfig.tileHeight,
     });
@@ -354,12 +309,10 @@ export abstract class BaseGameScene extends Phaser.Scene {
   }
 
   private createBackgroundMusic(): void {
-    if (this.mapConfig.backgroundMusicPath) {
-      this.music = this.sound.add(this.bgMusicKey, {
-        volume: this.mapConfig.volume ?? 0.5,
-        loop: true,
-      });
-    }
+    this.music = this.sound.add(GameAssets.MUSIC, {
+      volume: 0.5,
+      loop: true,
+    });
   }
 
   private setBounds(): void {
@@ -495,12 +448,7 @@ export abstract class BaseGameScene extends Phaser.Scene {
   }
 
   private launchMusic(): void {
-    if (
-      this.mapConfig.backgroundMusicPath &&
-      !this.music.isPlaying &&
-      !this.music.isPaused &&
-      !this.isSoundPaused
-    ) {
+    if (!this.music.isPlaying && !this.music.isPaused && !this.isSoundPaused) {
       this.music.play();
     }
   }
@@ -536,7 +484,9 @@ export abstract class BaseGameScene extends Phaser.Scene {
       vx !== 0 || vy !== 0 ? PlayerStateEnum.WALK : PlayerStateEnum.IDLE;
 
     const animKey = `${state}_${this.currentDirection}`;
-    this.player.anims.play(animKey, true);
+    if (this.player.anims.currentAnim?.key !== animKey) {
+      this.player.anims.play(animKey);
+    }
 
     this.player.x = Math.round(this.player.x);
     this.player.y = Math.round(this.player.y);

@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslatesEnum } from '../../shared/enums/translates.enum';
 import { ScenesEnum } from '../../shared/enums/scenes.enum';
-import { BaseGameService } from '../../shared/components/base/base-game.service';
+import { BasePlayerPositionService } from '../../shared/components/base/base-player-position.service';
 import { FormsGameService } from './forms-game.service';
-import { FormsGameScene } from './forms-game-scene';
 import { GenericInteractionsEnum } from '../../shared/enums/generic-interactions.enum';
 import { GenericTextReplacementEnum } from '../../shared/enums/generic-text-replacement.enum';
 import { UpemComponent } from './dialogs/upem/upem.component';
@@ -12,17 +11,19 @@ import { DialogComponentConfigInterface } from '../../shared/interfaces/dialog-c
 import { UboComponent } from './dialogs/ubo/ubo.component';
 import { Usthb2Component } from './dialogs/usthb2/usthb2.component';
 import { Usthb1Component } from './dialogs/usthb1/usthb1.component';
+import { BaseGameHouseScene } from '../../shared/components/base/base-game-house-scene';
 
 @Component({
   selector: 'app-forms',
   template: ``,
-  providers: [{ provide: BaseGameService, useExisting: FormsGameService }],
+  providers: [
+    { provide: BasePlayerPositionService, useExisting: FormsGameService },
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormsComponent extends BaseGameHouseComponent {
-  protected readonly gameScene = FormsGameScene;
+  protected readonly gameScene = BaseGameHouseScene;
   protected readonly scenesEnum = ScenesEnum.FORMS;
-  protected readonly mapWidth: number = 3840;
-  protected readonly mapHeight: number = 2560;
 
   protected dialogMap = new Map<
     GenericInteractionsEnum,
