@@ -1,0 +1,21 @@
+<mat-form-field appearance="outline">
+  <mat-label>{{ translations().get(label()) }}</mat-label>
+  @if (type() === "textarea") {
+    <textarea
+      matInput
+      type="text"
+      [formField]="control()"
+      formFieldError
+      [errorRef]="matErrorRef"
+    ></textarea>
+  } @else {
+    <input
+      matInput
+      [type]="type()"
+      [formField]="control()"
+      formFieldError
+      [errorRef]="matErrorRef"
+    />
+  }
+  <mat-error #matErrorRef></mat-error>
+</mat-form-field>

@@ -3,15 +3,10 @@ import {
   FieldTree,
   MaxLengthValidationError,
   MinLengthValidationError,
-  ValidationError,
 } from '@angular/forms/signals';
 import { TranslatesEnum } from '../../shared/enums/translates.enum';
 import { LanguageService } from '../services/language.service';
-
-type AppError =
-  | ValidationError
-  | MinLengthValidationError
-  | MaxLengthValidationError;
+import { AppError } from '../../shared/types/app-types';
 
 @Directive({
   selector: '[formFieldError]',

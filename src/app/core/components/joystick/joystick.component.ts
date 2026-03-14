@@ -1,13 +1,7 @@
 import { Component, HostListener, inject, signal } from '@angular/core';
 import { VirtualInputEnum } from '../../../shared/enums/virtual-input.enum';
 import { VirtualInputService } from '../../services/virtual-input.service';
-
-type Direction =
-  | 'center'
-  | VirtualInputEnum.LEFT
-  | VirtualInputEnum.RIGHT
-  | VirtualInputEnum.UP
-  | VirtualInputEnum.DOWN;
+import { Direction } from '../../../shared/types/app-types';
 
 @Component({
   selector: 'app-joystick',

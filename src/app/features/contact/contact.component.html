@@ -1,66 +1,33 @@
 <div class="container">
   <form>
-    <mat-form-field appearance="outline">
-      <mat-label>{{ translations().get(translatesEnum.FIRST_NAME) }}</mat-label>
-      <input
-        matInput
-        type="text"
-        [formField]="contactForm.firstName"
-        formFieldError
-        [errorRef]="firstNameErrorRef"
-      />
-      <mat-error #firstNameErrorRef></mat-error>
-    </mat-form-field>
+    <app-input-text
+      [label]="translatesEnum.FIRST_NAME"
+      [control]="contactForm.firstName"
+    ></app-input-text>
 
-    <mat-form-field appearance="outline">
-      <mat-label>{{ translations().get(translatesEnum.LAST_NAME) }}</mat-label>
-      <input
-        matInput
-        type="text"
-        [formField]="contactForm.lastName"
-        formFieldError
-        [errorRef]="lastNameErrorRef"
-      />
-      <mat-error #lastNameErrorRef></mat-error>
-    </mat-form-field>
+    <app-input-text
+      [label]="translatesEnum.LAST_NAME"
+      [control]="contactForm.lastName"
+    ></app-input-text>
 
-    <mat-form-field appearance="outline">
-      <mat-label>{{
-        translations().get(translatesEnum.EMAIL_FIELD)
-      }}</mat-label>
-      <input
-        matInput
-        type="email"
-        [formField]="contactForm.email"
-        formFieldError
-        [errorRef]="emailErrorRef"
-      />
-      <mat-error #emailErrorRef></mat-error>
-    </mat-form-field>
+    <app-input-text
+      [label]="translatesEnum.EMAIL_FIELD"
+      [control]="contactForm.email"
+      type="email"
+    ></app-input-text>
 
-    <mat-form-field appearance="outline">
-      <mat-label>{{ translations().get(translatesEnum.PHONE) }}</mat-label>
-      <input
-        matInput
-        type="text"
-        [formField]="contactForm.phone"
-        formFieldError
-        [errorRef]="phoneErrorRef"
-      />
-      <mat-error #phoneErrorRef></mat-error>
-    </mat-form-field>
+    <app-input-text
+      [label]="translatesEnum.PHONE"
+      [control]="contactForm.phone"
+      type="number"
+    ></app-input-text>
 
-    <mat-form-field appearance="outline" class="full">
-      <mat-label>{{ translations().get(translatesEnum.MESSAGE) }}</mat-label>
-      <textarea
-        matInput
-        type="text"
-        [formField]="contactForm.message"
-        formFieldError
-        [errorRef]="messageErrorRef"
-      ></textarea>
-      <mat-error #messageErrorRef></mat-error>
-    </mat-form-field>
+    <app-input-text
+      class="full"
+      [label]="translatesEnum.MESSAGE"
+      [control]="contactForm.message"
+      type="textarea"
+    ></app-input-text>
 
     <input type="text" [formField]="contactForm.company" class="company" />
   </form>

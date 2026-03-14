@@ -31,18 +31,11 @@ import { BaseTranslationsComponent } from '../../shared/components/base/base-tra
 import { TranslatesEnum } from '../../shared/enums/translates.enum';
 import { ContactInterface } from '../../shared/interfaces/contact.interface';
 import { HttpErrorInterface } from '../../shared/interfaces/http-error.interface';
+import { InputTextComponent } from '../../shared/components/input-text/input-text.component';
 
 @Component({
   selector: 'app-contact',
-  imports: [
-    ReactiveFormsModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    FormField,
-    FormFieldErrorDirective,
-  ],
+  imports: [MatButtonModule, FormField, InputTextComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -75,11 +68,6 @@ export class ContactComponent extends BaseTranslationsComponent {
 
   protected getTextsList(): TranslatesEnum[] {
     return [
-      TranslatesEnum.FIRST_NAME,
-      TranslatesEnum.LAST_NAME,
-      TranslatesEnum.EMAIL_FIELD,
-      TranslatesEnum.PHONE,
-      TranslatesEnum.MESSAGE,
       TranslatesEnum.SUBMIT,
       TranslatesEnum.SUCCESS_CONTACT,
       TranslatesEnum.FAILED_CONTACT,

@@ -1,8 +1,7 @@
 import { Injectable, signal, computed, effect, inject } from '@angular/core';
 import { StorageEnum } from '../../shared/enums/storage.enum';
 import { StorageService } from './storage.service';
-
-export type ThemeMode = 'light' | 'dark' | 'system';
+import { ThemeMode } from '../../shared/types/app-types';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
