@@ -57,7 +57,6 @@ export class ContactComponent extends BaseTranslationsComponent {
     lastName: '',
     email: '',
     phone: '',
-    subject: '',
     message: '',
     company: '',
   });
@@ -71,8 +70,6 @@ export class ContactComponent extends BaseTranslationsComponent {
     minLength(schemaPath.phone, 10);
     maxLength(schemaPath.phone, 10);
     pattern(schemaPath.phone, /^[0-9]{10}$/);
-    required(schemaPath.subject);
-    minLength(schemaPath.subject, 5);
     required(schemaPath.message);
   });
 
@@ -82,7 +79,6 @@ export class ContactComponent extends BaseTranslationsComponent {
       TranslatesEnum.LAST_NAME,
       TranslatesEnum.EMAIL_FIELD,
       TranslatesEnum.PHONE,
-      TranslatesEnum.SUBJECT,
       TranslatesEnum.MESSAGE,
       TranslatesEnum.SUBMIT,
       TranslatesEnum.SUCCESS_CONTACT,
@@ -128,7 +124,7 @@ export class ContactComponent extends BaseTranslationsComponent {
       return this.languageService.getTranslationWithParams(
         tooManyRequestError.key,
         {
-          data: tooManyRequestError.data % 60,
+          data: tooManyRequestError.data,
         },
       )();
     }

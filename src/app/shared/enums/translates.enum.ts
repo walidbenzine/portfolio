@@ -22,7 +22,6 @@ export enum TranslatesEnum {
   LAST_NAME = 'lastName',
   EMAIL_FIELD = 'emailField',
   PHONE = 'phone',
-  SUBJECT = 'subject',
   MESSAGE = 'message',
   SUBMIT = 'submit',
   INVALID_FIELD = 'invalidField',

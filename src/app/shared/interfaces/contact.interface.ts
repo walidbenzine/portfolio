@@ -4,6 +4,5 @@ export interface ContactInterface {
   email: string;
   phone: string;
   message: string;
-  subject: string;
   company: string;
 }

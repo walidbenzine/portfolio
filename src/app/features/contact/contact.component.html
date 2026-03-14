@@ -50,19 +50,7 @@
       <mat-error #phoneErrorRef></mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>{{ translations().get(translatesEnum.SUBJECT) }}</mat-label>
-      <input
-        matInput
-        type="text"
-        [formField]="contactForm.subject"
-        formFieldError
-        [errorRef]="subjectErrorRef"
-      />
-      <mat-error #subjectErrorRef></mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="full">
       <mat-label>{{ translations().get(translatesEnum.MESSAGE) }}</mat-label>
       <textarea
         matInput
@@ -75,14 +63,13 @@
     </mat-form-field>
 
     <input type="text" [formField]="contactForm.company" class="company" />
-
-    <button
-      mat-flat-button
-      type="submit"
-      [disabled]="contactForm().invalid()"
-      (click)="submit()"
-    >
-      {{ translations().get(translatesEnum.SUBMIT) }}
-    </button>
   </form>
+
+  <button
+    mat-flat-button
+    [disabled]="contactForm().invalid()"
+    (click)="submit()"
+  >
+    {{ translations().get(translatesEnum.SUBMIT) }}
+  </button>
 </div>
