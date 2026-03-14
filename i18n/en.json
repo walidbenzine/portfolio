@@ -29,7 +29,7 @@
   "minLength": "Minimum {{length}} characters",
   "maxLength": "Maximum {{length}} characters",
   "pattern": "Invalid format",
-  "rateLimit": "Please wait {{data}} minutes before sending another message",
+  "rateLimit": "You can't send another message before {{data}}",
   "email": "Invalid email",
   "exit": "Exit",
   "year": "year",
