@@ -22,7 +22,6 @@
   "lastName": "Last name",
   "emailField": "Mail",
   "phone": "Phone",
-  "subject": "Subject",
   "message": "Message",
   "submit": "Submit",
   "invalidField": "Invalid field",

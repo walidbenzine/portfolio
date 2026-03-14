@@ -22,7 +22,6 @@
   "lastName": "Nom",
   "emailField": "Mail",
   "phone": "Téléphone",
-  "subject": "Objet",
   "message": "Message",
   "submit": "Envoyer",
   "invalidField": "Champ invalide",
