@@ -315,4 +315,13 @@ export enum TranslatesEnum {
   MEMORY_RESUME_GAME = 'memoryResumeGame',
   MEMORY_ATTEMPTS_LABEL = 'memoryAttemptsLabel',
   MEMORY_GAME_WON_MESSAGE = 'memoryGameWonMessage',
+
+  SIMON = 'simon',
+  SIMON_START_GAME = 'simonStartGame',
+  SIMON_RESTART_GAME = 'simonRestartGame',
+  SIMON_PAUSE_GAME = 'simonPauseGame',
+  SIMON_RESUME_GAME = 'simonResumeGame',
+  SIMON_LEVEL = 'simonLevel',
+  SIMON_GAME_OVER = 'simonGameOver',
+  SIMON_SOUND_ENABLED = 'simonSoundEnabled',
 }

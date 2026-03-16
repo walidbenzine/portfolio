@@ -11,6 +11,7 @@ import { CrackTheCodeComponent } from './dialogs/crack-the-code/crack-the-code.c
 import { GuessTheNumberComponent } from './dialogs/guess-the-number/guess-the-number.component';
 import { MemoryComponent } from './dialogs/memory/memory.component';
 import { BaseGameHouseScene } from '../../shared/components/base/base-game-house-scene';
+import { SimonComponent } from './dialogs/simon/simon.component';
 
 @Component({
   selector: 'app-games',
@@ -37,7 +38,7 @@ export class GamesComponent extends BaseGameHouseComponent {
       { component: GuessTheNumberComponent },
     ],
     [GenericInteractionsEnum.INTERACTION3, { component: MemoryComponent }],
-    // [GenericInteractionsEnum.INTERACTION4, { component: UboComponent }],
+    [GenericInteractionsEnum.INTERACTION4, { component: SimonComponent }],
   ]);
 
   protected override getTextsList(): TranslatesEnum[] {
@@ -46,6 +47,7 @@ export class GamesComponent extends BaseGameHouseComponent {
       TranslatesEnum.CRACK_THE_CODE,
       TranslatesEnum.GUESS_THE_NUMBER,
       TranslatesEnum.MEMORY,
+      TranslatesEnum.SIMON,
     ];
   }
 
@@ -57,7 +59,7 @@ export class GamesComponent extends BaseGameHouseComponent {
       [TranslatesEnum.CRACK_THE_CODE, GenericTextReplacementEnum.TEXT1],
       [TranslatesEnum.GUESS_THE_NUMBER, GenericTextReplacementEnum.TEXT2],
       [TranslatesEnum.MEMORY, GenericTextReplacementEnum.TEXT3],
-      // [TranslatesEnum.UBO, GenericTextReplacementEnum.TEXT4],
+      [TranslatesEnum.SIMON, GenericTextReplacementEnum.TEXT4],
     ]);
   }
 }

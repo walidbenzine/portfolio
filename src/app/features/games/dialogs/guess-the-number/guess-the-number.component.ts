@@ -48,73 +48,39 @@ export class GuessTheNumberComponent extends BaseTranslationsComponent {
     translations: Map<TranslatesEnum, string>,
   ): GuessTheNumberTranslations {
     return {
-      title: this.getTranslationOrUndefined(
-        translations,
-        TranslatesEnum.GUESS_THE_NUMBER,
-      ),
-      startGame: this.getTranslationOrUndefined(
-        translations,
-        TranslatesEnum.GUESS_THE_NUMBER_START_GAME,
-      ),
-      restartGame: this.getTranslationOrUndefined(
-        translations,
+      title: translations.get(TranslatesEnum.GUESS_THE_NUMBER),
+      startGame: translations.get(TranslatesEnum.GUESS_THE_NUMBER_START_GAME),
+      restartGame: translations.get(
         TranslatesEnum.GUESS_THE_NUMBER_RESTART_GAME,
       ),
-      pauseGame: this.getTranslationOrUndefined(
-        translations,
-        TranslatesEnum.GUESS_THE_NUMBER_PAUSE_GAME,
-      ),
-      resumeGame: this.getTranslationOrUndefined(
-        translations,
-        TranslatesEnum.GUESS_THE_NUMBER_RESUME_GAME,
-      ),
-      secretCodeLabel: this.getTranslationOrUndefined(
-        translations,
+      pauseGame: translations.get(TranslatesEnum.GUESS_THE_NUMBER_PAUSE_GAME),
+      resumeGame: translations.get(TranslatesEnum.GUESS_THE_NUMBER_RESUME_GAME),
+      secretCodeLabel: translations.get(
         TranslatesEnum.GUESS_THE_NUMBER_SECRET_CODE_LABEL,
       ),
-      attemptsLabel: this.getTranslationOrUndefined(
-        translations,
+      attemptsLabel: translations.get(
         TranslatesEnum.GUESS_THE_NUMBER_ATTEMPTS_LABEL,
       ),
-      inputPlaceholder: this.getTranslationOrUndefined(
-        translations,
+      inputPlaceholder: translations.get(
         TranslatesEnum.GUESS_THE_NUMBER_INPUT_PLACEHOLDER,
       ),
-      guessAlreadyTried: this.getTranslationOrUndefined(
-        translations,
+      guessAlreadyTried: translations.get(
         TranslatesEnum.GUESS_THE_NUMBER_GUESS_ALREADY_TRIED,
       ),
-      submitGuess: this.getTranslationOrUndefined(
-        translations,
+      submitGuess: translations.get(
         TranslatesEnum.GUESS_THE_NUMBER_SUBMIT_GUESS,
       ),
-      attemptsHistoryLabel: this.getTranslationOrUndefined(
-        translations,
+      attemptsHistoryLabel: translations.get(
         TranslatesEnum.GUESS_THE_NUMBER_ATTEMPTS_HISTORY_LABEL,
       ),
-      isEqual: this.getTranslationOrUndefined(
-        translations,
-        TranslatesEnum.GUESS_THE_NUMBER_IS_EQUAL_LABEL,
-      ),
-      isLess: this.getTranslationOrUndefined(
-        translations,
-        TranslatesEnum.GUESS_THE_NUMBER_IS_LESS_LABEL,
-      ),
-      isGreater: this.getTranslationOrUndefined(
-        translations,
+      isEqual: translations.get(TranslatesEnum.GUESS_THE_NUMBER_IS_EQUAL_LABEL),
+      isLess: translations.get(TranslatesEnum.GUESS_THE_NUMBER_IS_LESS_LABEL),
+      isGreater: translations.get(
         TranslatesEnum.GUESS_THE_NUMBER_IS_GREATER_LABEL,
       ),
-      gameWonMessage: this.getTranslationOrUndefined(
-        translations,
+      gameWonMessage: translations.get(
         TranslatesEnum.GUESS_THE_NUMBER_GAME_WON_MESSAGE,
       ),
     };
-  }
-
-  private getTranslationOrUndefined(
-    translations: Map<TranslatesEnum, string>,
-    key: TranslatesEnum,
-  ): string | undefined {
-    return translations.get(key) || undefined;
   }
 }

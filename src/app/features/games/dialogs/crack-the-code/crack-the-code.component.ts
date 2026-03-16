@@ -47,69 +47,36 @@ export class CrackTheCodeComponent extends BaseTranslationsComponent {
     translations: Map<TranslatesEnum, string>,
   ): CrackTheCodeTranslations {
     return {
-      title: this.getTranslationOrUndefined(
-        translations,
-        TranslatesEnum.CRACK_THE_CODE,
-      ),
-      startGame: this.getTranslationOrUndefined(
-        translations,
-        TranslatesEnum.CRACK_THE_CODE_START_GAME,
-      ),
-      restartGame: this.getTranslationOrUndefined(
-        translations,
-        TranslatesEnum.CRACK_THE_CODE_RESTART_GAME,
-      ),
-      pauseGame: this.getTranslationOrUndefined(
-        translations,
-        TranslatesEnum.CRACK_THE_CODE_PAUSE_GAME,
-      ),
-      resumeGame: this.getTranslationOrUndefined(
-        translations,
-        TranslatesEnum.CRACK_THE_CODE_RESUME_GAME,
-      ),
-      secretCodeLabel: this.getTranslationOrUndefined(
-        translations,
+      title: translations.get(TranslatesEnum.CRACK_THE_CODE),
+      startGame: translations.get(TranslatesEnum.CRACK_THE_CODE_START_GAME),
+      restartGame: translations.get(TranslatesEnum.CRACK_THE_CODE_RESTART_GAME),
+      pauseGame: translations.get(TranslatesEnum.CRACK_THE_CODE_PAUSE_GAME),
+      resumeGame: translations.get(TranslatesEnum.CRACK_THE_CODE_RESUME_GAME),
+      secretCodeLabel: translations.get(
         TranslatesEnum.CRACK_THE_CODE_SECRET_CODE_LABEL,
       ),
-      attemptsLabel: this.getTranslationOrUndefined(
-        translations,
+      attemptsLabel: translations.get(
         TranslatesEnum.CRACK_THE_CODE_ATTEMPTS_LABEL,
       ),
-      inputPlaceholder: this.getTranslationOrUndefined(
-        translations,
+      inputPlaceholder: translations.get(
         TranslatesEnum.CRACK_THE_CODE_INPUT_PLACEHOLDER,
       ),
-      guessAlreadyTried: this.getTranslationOrUndefined(
-        translations,
+      guessAlreadyTried: translations.get(
         TranslatesEnum.CRACK_THE_CODE_GUESS_ALREADY_TRIED,
       ),
-      submitGuess: this.getTranslationOrUndefined(
-        translations,
-        TranslatesEnum.CRACK_THE_CODE_SUBMIT_GUESS,
-      ),
-      attemptsHistoryLabel: this.getTranslationOrUndefined(
-        translations,
+      submitGuess: translations.get(TranslatesEnum.CRACK_THE_CODE_SUBMIT_GUESS),
+      attemptsHistoryLabel: translations.get(
         TranslatesEnum.CRACK_THE_CODE_ATTEMPTS_HISTORY_LABEL,
       ),
-      correctPlaceLabel: this.getTranslationOrUndefined(
-        translations,
+      correctPlaceLabel: translations.get(
         TranslatesEnum.CRACK_THE_CODE_CORRECT_PLACE_LABEL,
       ),
-      wrongPlaceLabel: this.getTranslationOrUndefined(
-        translations,
+      wrongPlaceLabel: translations.get(
         TranslatesEnum.CRACK_THE_CODE_WRONG_PLACE_LABEL,
       ),
-      gameWonMessage: this.getTranslationOrUndefined(
-        translations,
+      gameWonMessage: translations.get(
         TranslatesEnum.CRACK_THE_CODE_GAME_WON_MESSAGE,
       ),
     };
-  }
-
-  private getTranslationOrUndefined(
-    translations: Map<TranslatesEnum, string>,
-    key: TranslatesEnum,
-  ): string | undefined {
-    return translations.get(key) || undefined;
   }
 }
