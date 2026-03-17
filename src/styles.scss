@@ -26,7 +26,7 @@ $dark-theme: mat.define-theme(
 
   @include mat.dialog-overrides(
     (
-      container-max-width: "80dvw",
+      container-max-width: 95dvw,
     )
   );
 
@@ -114,4 +114,12 @@ h3 {
       button-color: var(--mat-sys-tertiary-container),
     )
   );
+}
+
+.houseDialog {
+  color: var(--mat-app-text-color);
+
+  .mat-mdc-dialog-surface {
+    padding: 10px;
+  }
 }

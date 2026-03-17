@@ -1,4 +1,4 @@
-import { Component, computed } from '@angular/core';
+import { Component, computed, OnInit } from '@angular/core';
 import { BaseTranslationsComponent } from '../../../../shared/components/base/base-translations.component';
 import { TranslatesEnum } from '../../../../shared/enums/translates.enum';
 import {
@@ -11,18 +11,16 @@ import {
   template: `<memory
     [translations]="mappedTranslations()"
     [hiddenNumbers]="10"
+    [cardWidth]="cardWidth"
   />`,
-  styles: `
-    :host {
-      display: flex;
-      width: 80dvw;
-      max-height: 80dvh;
-      color: var(--mat-app-text-color);
-    }
-  `,
   imports: [MemoryLib],
 })
-export class MemoryComponent extends BaseTranslationsComponent {
+export class MemoryComponent
+  extends BaseTranslationsComponent
+  implements OnInit
+{
+  cardWidth: string | undefined = undefined;
+
   readonly mappedTranslations = computed(() =>
     this.mapTranslations(this.translations()),
   );
@@ -37,6 +35,12 @@ export class MemoryComponent extends BaseTranslationsComponent {
       TranslatesEnum.MEMORY_ATTEMPTS_LABEL,
       TranslatesEnum.MEMORY_GAME_WON_MESSAGE,
     ];
+  }
+
+  ngOnInit(): void {
+    if (window.innerWidth < 600) {
+      this.cardWidth = '40px';
+    }
   }
 
   private mapTranslations(

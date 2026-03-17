@@ -15,14 +15,6 @@ import {
     errorSoundPath="./sounds/simon/error.mp3"
     [tilesSoundPath]="tilesSoundPath"
   />`,
-  styles: `
-    :host {
-      display: flex;
-      width: 80dvw;
-      max-height: 80dvh;
-      color: var(--mat-app-text-color);
-    }
-  `,
   imports: [SimonLib],
 })
 export class SimonComponent extends BaseTranslationsComponent {

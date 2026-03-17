@@ -10,7 +10,8 @@ export class DialogService {
   openDialog(component: ComponentType<any>, config?: MatDialogConfig): void {
     if (!this.isDialogOpened) {
       const openedDialog = this.matDialog.open(component, {
-        maxHeight: '85dvh',
+        maxHeight: '95dvh',
+        maxWidth: '95dvw',
         ...config,
       });
 

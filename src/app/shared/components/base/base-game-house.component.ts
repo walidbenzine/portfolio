@@ -25,7 +25,12 @@ export abstract class BaseGameHouseComponent extends BaseGameComponent {
   private openDialog(dialogName: GenericInteractionsEnum): void {
     const dialog = this.dialogMap.get(dialogName);
     if (dialog) {
-      this.dialogService.openDialog(dialog.component, dialog.config);
+      this.dialogService.openDialog(dialog.component, {
+        height: '95dvh',
+        width: '90dvw',
+        panelClass: 'houseDialog',
+        ...dialog.config,
+      });
     }
   }
 

@@ -11,7 +11,7 @@ export class GameSoundService {
   private readonly storageService = inject(StorageService);
 
   private readonly _isEnabled = signal(
-    this.storageService.getItem<boolean>(StorageEnum.SOUND) ?? true,
+    this.storageService.getItem<boolean>(StorageEnum.SOUND) ?? false,
   );
 
   isGameSoundDisabled = computed(() => this.navigationService.isContactRoute());

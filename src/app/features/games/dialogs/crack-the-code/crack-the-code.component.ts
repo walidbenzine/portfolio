@@ -9,14 +9,6 @@ import {
 @Component({
   selector: 'app-crack-the-code',
   template: `<crack-the-code [translations]="mappedTranslations()" />`,
-  styles: `
-    :host {
-      display: flex;
-      width: 80dvw;
-      max-height: 80dvh;
-      color: var(--mat-app-text-color);
-    }
-  `,
   imports: [CrackTheCodeLib],
 })
 export class CrackTheCodeComponent extends BaseTranslationsComponent {

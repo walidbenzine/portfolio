@@ -9,14 +9,6 @@ import {
 @Component({
   selector: 'app-guess-the-number',
   template: `<guess-the-number [translations]="mappedTranslations()" />`,
-  styles: `
-    :host {
-      display: flex;
-      width: 80dvw;
-      max-height: 80dvh;
-      color: var(--mat-app-text-color);
-    }
-  `,
   imports: [GuessTheNumberLib],
 })
 export class GuessTheNumberComponent extends BaseTranslationsComponent {
