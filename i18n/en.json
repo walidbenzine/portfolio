@@ -12,6 +12,7 @@
   "left": "Left",
   "space": "Space",
   "changeLanguage": "Change language",
+  "changeTheme": "Change theme",
   "showJoystick": "Show the joystick",
   "gameSound": "Game sound",
   "loading": "Loading",
@@ -276,6 +277,8 @@
   "successContact": "The request has been sent",
   "failedContact": "The request could not be sent",
   "close": "Close",
+  "next": "Next",
+  "previous": "Previous",
 
   "crackTheCode": "Crack The Code",
   "crackTheCodeStartGame": "Start Game",
@@ -325,5 +328,19 @@
   "simonResumeGame": "Resume game",
   "simonLevel": "Level",
   "simonGameOver": "Game over",
-  "simonSoundEnabled": "Game sound"
+  "simonSoundEnabled": "Game sound",
+
+  "tourDefaultTitle": "Welcome to my portfolio!",
+  "tourStep1Text1": "Welcome! Let me introduce this project built with Angular, the technology I use the most.",
+  "tourStep1Text2": "Using the side menu, you can change the language or the theme. Your preferences are saved in your browser so you can find them again on your next visit.",
+  "tourStep1Text3": "To reset your settings, simply clear your browser cache or open a private browsing window.",
+  "tourStep2Title": "Navigation",
+  "tourStep2Text1": "You can navigate through the portfolio using the side menu.",
+  "tourStep2Text2": "The current page is highlighted with a different color.",
+  "tourStep3Title": "Game Music",
+  "tourStep3Text1": "You can turn the music on or off at any time by toggling this option.",
+  "tourStep3Text2": "Also make sure to check your device, browser volume, or silent mode on your phone.",
+  "tourStep4Title": "Movement",
+  "tourStep4Text1": "You can also explore the portfolio by moving around the map and entering the different houses.",
+  "tourStep4Text2": "To move, use the joystick or the arrow keys on your keyboard if you are on a computer."
 }
