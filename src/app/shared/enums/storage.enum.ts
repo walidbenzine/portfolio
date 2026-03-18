@@ -3,4 +3,5 @@ export enum StorageEnum {
   LANGUAGE = 'language',
   JOYSTICK = 'joystick',
   SOUND = 'sound',
+  APP_TOUR_DONE = 'appTourDone',
 }

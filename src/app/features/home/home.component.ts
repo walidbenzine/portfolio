@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { BaseGameComponent } from '../../shared/components/base/base-game.component';
 import { BasePlayerPositionService } from '../../shared/components/base/base-player-position.service';
 import { ScenesEnum } from '../../shared/enums/scenes.enum';
@@ -6,6 +11,7 @@ import { TranslatesEnum } from '../../shared/enums/translates.enum';
 import { HomeGameService } from './home-game.service';
 import { HomeGameScene } from './home-game-scene';
 import { GenericTextReplacementEnum } from '../../shared/enums/generic-text-replacement.enum';
+import { NavigationService } from '../../core/services/navigation.service';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +21,8 @@ import { GenericTextReplacementEnum } from '../../shared/enums/generic-text-repl
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent extends BaseGameComponent {
+export class HomeComponent extends BaseGameComponent implements OnInit {
+  private readonly navigationService = inject(NavigationService);
   protected readonly gameScene = HomeGameScene;
   protected readonly scenesEnum = ScenesEnum.HOME;
 
@@ -36,5 +43,10 @@ export class HomeComponent extends BaseGameComponent {
     GenericTextReplacementEnum
   > {
     return new Map<TranslatesEnum, GenericTextReplacementEnum>();
+  }
+
+  override ngOnInit(): void {
+    this.navigationService.markInternalNavigation();
+    super.ngOnInit();
   }
 }

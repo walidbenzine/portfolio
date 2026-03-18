@@ -50,7 +50,7 @@ body {
 
 body {
   background: var(--mat-sys-surface);
-  color: var(--mat-sys-on-surface);
+  color: var(--mat-app-background-color);
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
@@ -122,4 +122,57 @@ h3 {
   .mat-mdc-dialog-surface {
     padding: 10px;
   }
+}
+
+.appTour {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: solid 1px var(--mat-app-text-color);
+
+  .shepherd-arrow:before {
+    background-color: var(--mat-app-background-color);
+    border: solid 1px var(--mat-app-text-color);
+  }
+
+  .shepherd-header {
+    background: var(--mat-app-background-color) !important;
+    box-shadow: none;
+    .shepherd-title {
+      color: var(--mat-app-text-color);
+      font-weight: bold;
+      justify-content: center;
+    }
+  }
+
+  .shepherd-text {
+    background-color: var(--mat-app-background-color);
+    color: var(--mat-app-text-color);
+    box-shadow: none;
+    border-top: 1px solid var(--mat-app-text-color);
+    border-bottom: 1px solid var(--mat-app-text-color);
+  }
+
+  .shepherd-footer {
+    background-color: var(--mat-app-background-color);
+    padding: 0.75rem;
+    box-shadow: none;
+
+    .shepherd-button-primary {
+      color: var(--mat-sys-on-primary-fixed-variant);
+      background: var(--mat-sys-primary);
+    }
+
+    .shepherd-button-secondary {
+      background: var(--mat-sys-secondary);
+    }
+  }
+}
+
+.highlight {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: solid 2px var(--mat-sys-primary);
+  filter: brightness(0.4);
 }

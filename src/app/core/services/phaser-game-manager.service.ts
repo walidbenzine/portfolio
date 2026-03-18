@@ -1,14 +1,16 @@
-import { computed, inject, Injectable } from '@angular/core';
+import { computed, effect, inject, Injectable } from '@angular/core';
 import { InitSceneInterface } from '../../shared/interfaces/init-scene.interface';
 import { GameRouteConfigInterface } from '../../shared/interfaces/game-route-config.interface';
 import { LoaderService } from './loader.service';
 import { NavigationService } from './navigation.service';
 import { BaseBootScene } from '../../shared/components/base/base-boot-scene';
 import { GameEventsEnum } from '../../shared/enums/game-events.enum';
+import { AppTourService } from './app-tour.service';
 
 @Injectable({ providedIn: 'root' })
 export class PhaserGameManagerService {
   private readonly loaderService = inject(LoaderService);
+  private readonly appTourService = inject(AppTourService);
   private readonly navigationService = inject(NavigationService);
 
   private readonly parentId = 'phaser-game-container';
@@ -21,6 +23,13 @@ export class PhaserGameManagerService {
   shouldHideGameContainerDiv = computed(() =>
     this.navigationService.isContactRoute(),
   );
+
+  constructor() {
+    effect(() => {
+      const isTourActive = this.appTourService.isTourActive();
+      isTourActive ? this.game?.pause() : this.game?.resume();
+    });
+  }
 
   async activateScene(
     routeConfig: GameRouteConfigInterface,
@@ -89,6 +98,7 @@ export class PhaserGameManagerService {
     });
 
     this.game.events.once(GameEventsEnum.BOOT_COMPLETED, () => {
+      this.appTourService.startTour();
       this.resolveGameReady();
     });
 

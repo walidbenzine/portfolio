@@ -14,6 +14,7 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { LanguagesEnum } from './shared/enums/languages.enum';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { LanguageService } from './core/services/language.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,7 +27,8 @@ export const appConfig: ApplicationConfig = {
     }),
     provideAppInitializer(() => {
       const translate = inject(TranslateService);
-      return translate.use(LanguagesEnum.FR);
+      const languageService = inject(LanguageService);
+      return translate.use(languageService.getLanguage());
     }),
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,

@@ -12,6 +12,7 @@
   "left": "Gauche",
   "space": "Espace",
   "changeLanguage": "Changer la langue",
+  "changeTheme": "Changer le thème",
   "showJoystick": "Afficher le joystick",
   "gameSound": "Son du jeu",
   "loading": "Chargement",
@@ -275,6 +276,8 @@
   "successContact": "La demande à bien été envoyée",
   "failedContact": "La demande n'a pas pu être envoyée",
   "close": "Fermer",
+  "next": "Suivant",
+  "previous": "Précedent",
 
   "crackTheCode": "Cracker le code",
   "crackTheCodeStartGame": "Démarrer le jeu",
@@ -324,5 +327,19 @@
   "simonResumeGame": "Continuer le jeu",
   "simonLevel": "Niveau",
   "simonGameOver": "Partie terminée",
-  "simonSoundEnabled": "Son du jeu"
+  "simonSoundEnabled": "Son du jeu",
+
+  "tourDefaultTitle": "Bienvenue dans mon portfolio !",
+  "tourStep1Text1": "Bienvenue ! Je vais vous présenter ce projet réalisé avec Angular, la technologie que j’utilise le plus souvent.",
+  "tourStep1Text2": "Grâce au menu latéral, vous pouvez changer la langue ou le thème. Vos préférences sont enregistrées dans votre navigateur pour que vous les retrouviez lors de votre prochaine visite.",
+  "tourStep1Text3": "Pour réinitialiser les paramètres, il suffit de vider le cache de votre navigateur ou d’ouvrir une fenêtre de navigation privée.",
+  "tourStep2Title": "Navigation",
+  "tourStep2Text1": "Vous pouvez naviguer dans le portfolio grâce au menu latéral.",
+  "tourStep2Text2": "La page actuellement affichée est mise en évidence par une couleur différente.",
+  "tourStep3Title": "Musique du jeu",
+  "tourStep3Text1": "Vous pouvez activer ou désactiver la musique à tout moment en cochant ou décochant cette option.",
+  "tourStep3Text2": "Pensez aussi à vérifier le volume de votre appareil, de votre navigateur, ou le mode silencieux de votre téléphone.",
+  "tourStep4Title": "Déplacement",
+  "tourStep4Text1": "Vous pouvez également explorer le portfolio en vous déplaçant sur la carte et en entrant dans les différentes maisons.",
+  "tourStep4Text2": "Pour vous déplacer, utilisez le joystick ou les touches directionnelles de votre clavier si vous êtes sur ordinateur."
 }

@@ -1,11 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
+import { MatIcon } from '@angular/material/icon';
 import { ThemeService } from '../../services/theme.service';
+import { TranslatesEnum } from '../../../shared/enums/translates.enum';
+import { LanguageService } from '../../services/language.service';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-theme-selector',
   template: `
-    <mat-icon (click)="themeService.toggle()">
+    <mat-icon (click)="themeService.toggle()" [matTooltip]="translation()">
       {{ themeService.theme() === 'dark' ? 'light_mode' : 'dark_mode' }}
     </mat-icon>
   `,
@@ -25,9 +28,14 @@ import { ThemeService } from '../../services/theme.service';
       }
     }
   `,
-  imports: [MatIconModule],
+  imports: [MatIcon, MatTooltip],
   providers: [ThemeService],
 })
 export class ThemeSelectorComponent {
+  private readonly languageService = inject(LanguageService);
   public readonly themeService = inject(ThemeService);
+
+  readonly translation = this.languageService.getTranslation(
+    TranslatesEnum.CHANGE_THEME,
+  );
 }

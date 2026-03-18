@@ -8,14 +8,24 @@ import { RoutesEnum } from '../../shared/enums/routes.enum';
 export class NavigationService {
   private readonly router = inject(Router);
 
-  private readonly currentUrlSignal = toSignal(
+  private hasNavigatedInternally = false;
+
+  readonly currentUrlSignal = toSignal(
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
       map((event) => event.urlAfterRedirects),
     ),
   );
 
-  isContactRoute = computed(
+  readonly isContactRoute = computed(
     () => this.currentUrlSignal() === `/${RoutesEnum.CONTACT}`,
   );
+
+  markInternalNavigation() {
+    this.hasNavigatedInternally = true;
+  }
+
+  isInternalNavigation() {
+    return this.hasNavigatedInternally;
+  }
 }

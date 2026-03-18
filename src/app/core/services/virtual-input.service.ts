@@ -1,10 +1,13 @@
-import { Injectable, signal, WritableSignal } from '@angular/core';
+import { inject, Injectable, signal, WritableSignal } from '@angular/core';
 import { GameEventsEnum } from '../../shared/enums/game-events.enum';
 import { VirtualInputEnum } from '../../shared/enums/virtual-input.enum';
 import { emitGameEvent } from '../../shared/helpers/game-event.helper';
+import { AppTourService } from './app-tour.service';
 
 @Injectable({ providedIn: 'root' })
 export class VirtualInputService {
+  private readonly appTourService = inject(AppTourService);
+
   private up = signal(false);
   private down = signal(false);
   private left = signal(false);
@@ -20,13 +23,18 @@ export class VirtualInputService {
   ]);
 
   private emitVirtualInputEvent(): void {
-    emitGameEvent<GameEventsEnum.VIRTUAL_INPUT>(GameEventsEnum.VIRTUAL_INPUT, {
-      up: this.up(),
-      down: this.down(),
-      left: this.left(),
-      right: this.right(),
-      space: this.space(),
-    });
+    if (!this.appTourService.isTourActive()) {
+      emitGameEvent<GameEventsEnum.VIRTUAL_INPUT>(
+        GameEventsEnum.VIRTUAL_INPUT,
+        {
+          up: this.up(),
+          down: this.down(),
+          left: this.left(),
+          right: this.right(),
+          space: this.space(),
+        },
+      );
+    }
   }
 
   private setKeyState(key: VirtualInputEnum, state: boolean): void {
