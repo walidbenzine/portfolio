@@ -39,6 +39,7 @@ export class SimonComponent extends BaseTranslationsComponent {
       TranslatesEnum.SIMON_LEVEL,
       TranslatesEnum.SIMON_GAME_OVER,
       TranslatesEnum.SIMON_SOUND_ENABLED,
+      TranslatesEnum.SIMON_INSTRUCTIONS,
     ];
   }
 
@@ -54,6 +55,7 @@ export class SimonComponent extends BaseTranslationsComponent {
       level: translations.get(TranslatesEnum.SIMON_LEVEL),
       gameOver: translations.get(TranslatesEnum.SIMON_GAME_OVER),
       soundEnabled: translations.get(TranslatesEnum.SIMON_SOUND_ENABLED),
+      instructions: translations.get(TranslatesEnum.SIMON_INSTRUCTIONS),
     };
   }
 }

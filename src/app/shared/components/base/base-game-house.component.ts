@@ -26,8 +26,7 @@ export abstract class BaseGameHouseComponent extends BaseGameComponent {
     const dialog = this.dialogMap.get(dialogName);
     if (dialog) {
       this.dialogService.openDialog(dialog.component, {
-        height: '95dvh',
-        width: '90dvw',
+        minHeight: '70dvh',
         panelClass: 'houseDialog',
         ...dialog.config,
       });

@@ -32,6 +32,7 @@ export class CrackTheCodeComponent extends BaseTranslationsComponent {
       TranslatesEnum.CRACK_THE_CODE_CORRECT_PLACE_LABEL,
       TranslatesEnum.CRACK_THE_CODE_WRONG_PLACE_LABEL,
       TranslatesEnum.CRACK_THE_CODE_GAME_WON_MESSAGE,
+      TranslatesEnum.CRACK_THE_CODE_INSTRUCTIONS,
     ];
   }
 
@@ -68,6 +69,9 @@ export class CrackTheCodeComponent extends BaseTranslationsComponent {
       ),
       gameWonMessage: translations.get(
         TranslatesEnum.CRACK_THE_CODE_GAME_WON_MESSAGE,
+      ),
+      instructions: translations.get(
+        TranslatesEnum.CRACK_THE_CODE_INSTRUCTIONS,
       ),
     };
   }

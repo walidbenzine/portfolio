@@ -33,6 +33,7 @@ export class GuessTheNumberComponent extends BaseTranslationsComponent {
       TranslatesEnum.GUESS_THE_NUMBER_IS_GREATER_LABEL,
       TranslatesEnum.GUESS_THE_NUMBER_IS_LESS_LABEL,
       TranslatesEnum.GUESS_THE_NUMBER_GAME_WON_MESSAGE,
+      TranslatesEnum.GUESS_THE_NUMBER_INSTRUCTIONS,
     ];
   }
 
@@ -72,6 +73,9 @@ export class GuessTheNumberComponent extends BaseTranslationsComponent {
       ),
       gameWonMessage: translations.get(
         TranslatesEnum.GUESS_THE_NUMBER_GAME_WON_MESSAGE,
+      ),
+      instructions: translations.get(
+        TranslatesEnum.GUESS_THE_NUMBER_INSTRUCTIONS,
       ),
     };
   }
